@@ -117,28 +117,64 @@ public class Function {
     // }
 
 
-    public static boolean isPrime(int n){
+    // public static boolean isPrime(int n){
        
-        boolean isPrime=true;
-        for(int i=2;i<=n-1;i++){
-            if(n % i ==0){
-                isPrime=false;
-                break;
-            }
-        }
-        return isPrime;
+    //     boolean isPrime=true;
+    //     for(int i=2;i<=n-1;i++){
+    //         if(n % i ==0){
+    //             isPrime=false;
+    //             break;
+    //         }
+    //     }
+    //     return isPrime;
         
-    }
+    // }
 
-    public static void primesInrange(int n){
-        for(int i=2; i<=n;i++){
-            if(isPrime(i)){
-                System.out.println(i +" ");
-            }
+    // public static void primesInrange(int n){
+    //     for(int i=2; i<=n;i++){
+    //         if(isPrime(i)){
+    //             System.out.println(i +" ");
+    //         }
+    //     }
+    //     System.out.println();
+    // }
+
+
+    //Binary to Decimal
+    // public static void binToDec(int binNum){
+    //     int pow = 0;
+    //     int decNum = 0;
+
+    //     while (binNum > 0) {
+    //         int lastDigit = binNum % 10;
+    //         decNum += lastDigit * Math.pow(2, pow);
+    //         pow++;
+    //         binNum /= 10;
+    //     }
+
+    //     System.out.println("Decimal number is: " + decNum);
+    // }
+    // public static void main(String[] args) {
+    //       binToDec(101);
+    // }
+
+    //Decimal to binary
+    public static  void DecToBin(int n){
+        int mynum=n; 
+        int pow=0;
+        int binNum=0;
+
+        while (n> 0) {
+            int rem=n %2;
+            binNum=binNum +(rem * (int)Math.pow(10,pow) );
+             
+            pow++;
+            n=n/2;
+            
         }
-        System.out.println();
+        System.out.println("binary form of "+mynum+ " = "+binNum);
     }
     public static void main(String[] args) {
-          primesInrange(20);
+        DecToBin(10);
     }
 }
