@@ -110,19 +110,64 @@ public class Pattern2 {
     //     Butterfly(7);
     // }
 
-    public static void Solid_Rhombus(int n){
-        for(int i=1;i<=n;i++){
-          for(int j=1;j<=(n-i);j++){
-            System.out.print(" ");
+    // public static void Solid_Rhombus(int n){
+    //     for(int i=1;i<=n;i++){
+    //       for(int j=1;j<=(n-i);j++){
+    //         System.out.print(" ");
 
-          }
-          for(int j=1;j<=n;j++){
-            System.out.print("*");
-          }
-          System.out.println();
+    //       }
+    //       for(int j=1;j<=n;j++){
+    //         System.out.print("*");
+    //       }
+    //       System.out.println();
+    //     }
+    // }
+    // public static void main(String[] args) {
+    //     Solid_Rhombus(5);
+    // }
+
+    // public static void hallow_Rhombus(int n){
+    //     for(int i=1;i<=n;i++){
+    //         for(int j=1;j<=(n-i);j++){
+    //             System.out.print(" ");
+    //         }
+    //         for(int j=1;j<=n;j++){
+    //             if(i==1||i==n ||j==1||j==n){
+    //                 System.out.print("*");
+    //             }else{
+    //                 System.out.print(" ");
+    //             }
+
+    //         }
+    //         System.out.println();
+    //     }
+    // }
+    // public static void main(String[] args) {
+    //     hallow_Rhombus(5);
+    // }
+
+
+    public static void  DiamondPattern(int n){
+        for(int i=1;i<=n;i++){
+            for(int j=1; j<=(n-i);j++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=(2*i)-1;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        for(int i=n;i>=1;i--){
+            for(int j=1; j<=(n-i);j++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=(2*i)-1;j++){
+                System.out.print("*");
+            }
+            System.out.println();
         }
     }
     public static void main(String[] args) {
-        Solid_Rhombus(5);
+        DiamondPattern(4);
     }
 }
