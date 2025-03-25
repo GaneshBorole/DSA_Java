@@ -168,6 +168,6 @@ public class Pattern2 {
         }
     }
     public static void main(String[] args) {
-        DiamondPattern(4);
+        DiamondPattern(5);
     }
 }
