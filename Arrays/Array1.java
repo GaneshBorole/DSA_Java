@@ -175,39 +175,64 @@ public class Array1 {
     //Pairs in array
 
     
-        public static void pairsinArray(int numbers[]) {
-            for (int i = 0; i < numbers.length; i++) {
-                int curr = numbers[i];
+        // public static void pairsinArray(int numbers[]) {
+        //     for (int i = 0; i < numbers.length; i++) {
+        //         int curr = numbers[i];
     
-                for (int j = i + 1; j < numbers.length; j++) {
-                    System.out.println("(" + curr + " , " + numbers[j] + ")");
+        //         for (int j = i + 1; j < numbers.length; j++) {
+        //             System.out.println("(" + curr + " , " + numbers[j] + ")");
+        //         }
+        //         System.out.println();
+        //     }
+        // }
+    
+        // public static void main(String[] args) {
+        //     Scanner sc = new Scanner(System.in);
+    
+        //     System.out.println("Enter the size:");
+        //     int size = sc.nextInt();
+        //     int numbers[] = new int[size];
+    
+        //     System.out.println("Enter the elements:");
+        //     for (int i = 0; i < numbers.length; i++) {
+        //         numbers[i] = sc.nextInt();
+        //     }
+    
+        //     // Printing pairs
+        //     pairsinArray(numbers);
+    
+        //     // Corrected loop to print array elements
+        //     System.out.println("Array elements:");
+        //     for (int i = 0; i < numbers.length; i++) {
+        //         System.out.println(numbers[i] + " ");
+        //     }
+    
+        //     sc.close(); // Close Scanner to avoid memory leaks
+        // }
+
+
+        public static void PrintsubArrays(int numbers[]){
+            for(int i=0;i<numbers.length;i++){ //start=i
+                for(int j=i;j<numbers.length;j++){ //end=j
+                    for(int k=i;k<=j;k++){
+                        System.out.print(numbers[k]+" ");
+                    }
+                    System.out.println();;
                 }
                 System.out.println();
+
             }
         }
-    
         public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-    
-            System.out.println("Enter the size:");
-            int size = sc.nextInt();
-            int numbers[] = new int[size];
-    
-            System.out.println("Enter the elements:");
-            for (int i = 0; i < numbers.length; i++) {
-                numbers[i] = sc.nextInt();
+            Scanner sc= new Scanner(System.in);
+            System.out.println("enter the size");
+            int size= sc.nextInt();
+            int numbers[]=new int [size];
+            System.out.println("enter element ");
+            for(int i=0;i<numbers.length;i++){
+                numbers[i]=sc.nextInt();
             }
-    
-            // Printing pairs
-            pairsinArray(numbers);
-    
-            // Corrected loop to print array elements
-            System.out.println("Array elements:");
-            for (int i = 0; i < numbers.length; i++) {
-                System.out.println(numbers[i] + " ");
-            }
-    
-            sc.close(); // Close Scanner to avoid memory leaks
+            PrintsubArrays(numbers);
         }
     }
     
