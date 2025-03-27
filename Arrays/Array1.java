@@ -217,12 +217,14 @@ public class Array1 {
                     for(int k=i;k<=j;k++){
                         System.out.print(numbers[k]+" ");
                     }
-                    System.out.println();;
+                    System.out.println();
                 }
                 System.out.println();
 
             }
         }
+
+    
         public static void main(String[] args) {
             Scanner sc= new Scanner(System.in);
             System.out.println("enter the size");
