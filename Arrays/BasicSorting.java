@@ -4,19 +4,48 @@ import java.util.*;
 
 public class BasicSorting {
 
-    public static void bubbleSort(int arr[]){
-        for(int turn=0; turn<arr.length-1;turn++){
-            for(int j=0;j<arr.length-1-turn;j++){
-                if(arr[j]>arr[j+1]){
-                    int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1]= temp;
-                }
+    // public static void bubbleSort(int arr[]){
+    //     for(int turn=0; turn<arr.length-1;turn++){
+    //         for(int j=0;j<arr.length-1-turn;j++){
+    //             if(arr[j]>arr[j+1]){
+    //                 int temp = arr[j];
+    //                 arr[j] = arr[j+1];
+    //                 arr[j+1]= temp;
+    //             }
+    //         }
+
+    //     }
+
+
+    // }
+    // public static void PrintArr(int arr[]){
+    //     System.out.println("Sorted array is: ");
+    //      for(int i=0;i<arr.length;i++){
+    //         System.out.print(arr[i]+" ");
+
+    //      }
+    //      System.out.println();
+        
+    // }
+
+
+    // selection Sort
+
+
+    public static void  selectionSort(int arr[]){
+        for(int i=0;i<arr.length-1;i++){
+            int minPosition=i;
+        for(int j=i+1;j<arr.length;j++){
+            if(arr[minPosition] > arr[j]){
+                minPosition = j;
+                
             }
-
         }
-
-
+        //swap
+        int temp=arr[minPosition];
+        arr[minPosition]=arr[i];
+        arr[i]=temp;
+        }
     }
     public static void PrintArr(int arr[]){
         System.out.println("Sorted array is: ");
@@ -36,9 +65,12 @@ public static void main(String[] args) {
     for(int i=0; i<arr.length;i++){
         arr[i]=sc.nextInt();
     }
-    bubbleSort(arr);
+    // bubbleSort(arr);
+    selectionSort(arr);
     PrintArr(arr);
        
     
 }
+
+
 }
