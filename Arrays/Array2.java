@@ -82,52 +82,81 @@ public class Array2 {
 // }
  
 
+   //Trapped Rain Water problem
 
+// public static int TrappedRainWater(int heights[]) {
+//     // Base case: If there are less than 3 elements, no water can be trapped
+//     if (heights == null || heights.length < 3) {
+//         return 0;
+//     }
 
-public static int TrappedRainWater(int heights[]) {
-    // Base case: If there are less than 3 elements, no water can be trapped
-    if (heights == null || heights.length < 3) {
-        return 0;
-    }
-
-    int n = heights.length;
+//     int n = heights.length;
     
-    // Calculate leftMax boundary
-    int leftmax[] = new int[n];
-    leftmax[0] = heights[0];
-    for (int i = 1; i < n; i++) { // Start from i = 1
-        leftmax[i] = Math.max(heights[i], leftmax[i - 1]);
-    }
+//     // Calculate leftMax boundary
+//     int leftmax[] = new int[n];
+//     leftmax[0] = heights[0];
+//     for (int i = 1; i < n; i++) { // Start from i = 1
+//         leftmax[i] = Math.max(heights[i], leftmax[i - 1]);
+//     }
 
-    // Calculate rightMax boundary
-    int rightmax[] = new int[n];
-    rightmax[n - 1] = heights[n - 1];
-    for (int i = n - 2; i >= 0; i--) { // Fix loop condition
-        rightmax[i] = Math.max(heights[i], rightmax[i + 1]);
-    }
+//     // Calculate rightMax boundary
+//     int rightmax[] = new int[n];
+//     rightmax[n - 1] = heights[n - 1];
+//     for (int i = n - 2; i >= 0; i--) { // Fix loop condition
+//         rightmax[i] = Math.max(heights[i], rightmax[i + 1]);
+//     }
 
-    // Calculate trapped water
-    int trappedWater = 0;
-    for (int i = 0; i < n; i++) {
-        int waterlevel = Math.min(leftmax[i], rightmax[i]);
-        trappedWater += waterlevel - heights[i];
-    }
+//     // Calculate trapped water
+//     int trappedWater = 0;
+//     for (int i = 0; i < n; i++) {
+//         int waterlevel = Math.min(leftmax[i], rightmax[i]);
+//         trappedWater += waterlevel - heights[i];
+//     }
 
-    return trappedWater; // Fix return statement
+//     return trappedWater; // Fix return statement
+// }
+// public static void main(String[] args) {
+//     Scanner sc= new Scanner(System.in);
+//     System.out.println("enter the size of array");
+//     int size= sc.nextInt();
+//     int heights[]=new int [size];
+//     System.out.println("enter heights of bars");
+//     for(int i=0; i<heights.length;i++){
+//         heights[i]=sc.nextInt();
+//     }
+//     System.out.println("Trapped rainwater is "+TrappedRainWater(heights));
+
+// }
+
+public static int BuyAndCell(int prices[]){
+    int buyprice=Integer.MAX_VALUE;
+    int maxProfit=0;
+
+    for(int i=0;i<prices.length;i++){
+        if(buyprice < prices[i]){ //profit
+            int profit=prices[i]-buyprice; //todays profit
+            maxProfit=Math.max(maxProfit, profit);
+        }else{
+            buyprice=prices[i];
+
+        }
+    }
+    return maxProfit;
 }
+
 public static void main(String[] args) {
     Scanner sc= new Scanner(System.in);
     System.out.println("enter the size of array");
     int size= sc.nextInt();
-    int heights[]=new int [size];
-    System.out.println("enter heights of bars");
-    for(int i=0; i<heights.length;i++){
-        heights[i]=sc.nextInt();
+    int prices[]=new int[size];
+    System.out.println("enter prices in array");
+    for(int i=0;i<prices.length;i++){
+        prices[i]=sc.nextInt();
     }
-    System.out.println("Trapped rainwater is "+TrappedRainWater(heights));
+    System.out.println("max profit is "+BuyAndCell(prices));
+}
 
 }
-    
-}
+
     
 
