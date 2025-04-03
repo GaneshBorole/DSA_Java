@@ -32,20 +32,48 @@ public class BasicSorting {
     // selection Sort
 
 
-    public static void  selectionSort(int arr[]){
-        for(int i=0;i<arr.length-1;i++){
-            int minPosition=i;
-        for(int j=i+1;j<arr.length;j++){
-            if(arr[minPosition] > arr[j]){
-                minPosition = j;
+    // public static void  selectionSort(int arr[]){
+    //     for(int i=0;i<arr.length-1;i++){
+    //         int minPosition=i;
+    //     for(int j=i+1;j<arr.length;j++){
+    //         if(arr[minPosition] > arr[j]){
+    //             minPosition = j;
                 
+    //         }
+    //     }
+    //     //swap
+    //     int temp=arr[minPosition];
+    //     arr[minPosition]=arr[i];
+    //     arr[i]=temp;
+    //     }
+    // }
+    // public static void PrintArr(int arr[]){
+    //     System.out.println("Sorted array is: ");
+    //      for(int i=0;i<arr.length;i++){
+    //         System.out.print(arr[i]+" ");
+
+    //      }
+    //      System.out.println();
+        
+    // }
+
+
+
+
+
+    //Insertion sort
+    public static void  InsertionSort(int arr[]){
+        for(int i=0;i<arr.length;i++){
+            int curr= arr[i];
+            int prev=i-1;
+            while(prev >=0 && arr[prev]> curr){
+                arr[prev+1]=arr[prev];
+                prev--;
             }
+            //insertion
+            arr[prev+1]=curr;
         }
-        //swap
-        int temp=arr[minPosition];
-        arr[minPosition]=arr[i];
-        arr[i]=temp;
-        }
+
     }
     public static void PrintArr(int arr[]){
         System.out.println("Sorted array is: ");
@@ -54,7 +82,6 @@ public class BasicSorting {
 
          }
          System.out.println();
-        
     }
 public static void main(String[] args) {
     Scanner sc= new Scanner(System.in);
@@ -66,7 +93,8 @@ public static void main(String[] args) {
         arr[i]=sc.nextInt();
     }
     // bubbleSort(arr);
-    selectionSort(arr);
+    // selectionSort(arr);
+    InsertionSort(arr);
     PrintArr(arr);
        
     
