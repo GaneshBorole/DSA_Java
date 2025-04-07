@@ -1,120 +1,116 @@
 package Arrays;
+
 import java.util.*;
 
 public class Array2D {
 
     // public static boolean search(int [][] matrix,int key){
-    //     for (int i = 0; i < matrix.length; i++) {
-    //         for (int j = 0; j < matrix[0].length; j++) {
-    //            if( matrix[i][j] ==key){
-    //              System.out.println("key found at cell ("+i+","+j+")");
-    //              return true;
-    //            }
-    //         }
+    // for (int i = 0; i < matrix.length; i++) {
+    // for (int j = 0; j < matrix[0].length; j++) {
+    // if( matrix[i][j] ==key){
+    // System.out.println("key found at cell ("+i+","+j+")");
+    // return true;
+    // }
+    // }
 
-    //     }
-    //     System.out.println("key is not found");
-    //     return false;
-        
+    // }
+    // System.out.println("key is not found");
+    // return false;
+
     // }
     // public static void main(String[] args) {
-    //     Scanner sc = new Scanner(System.in);
+    // Scanner sc = new Scanner(System.in);
 
-    //     System.out.println("Enter size:");
-    //     int size = sc.nextInt();
+    // System.out.println("Enter size:");
+    // int size = sc.nextInt();
 
-    //     int[][] matrix = new int[size][size];
+    // int[][] matrix = new int[size][size];
 
-    //     // Input
-    //     System.out.println("Enter the elements:");
-    //     for (int i = 0; i < size; i++) {
-    //         for (int j = 0; j < size; j++) {
-    //             matrix[i][j] = sc.nextInt();
-    //         }
-    //     }
-
-    //     // Output
-    //     System.out.println("The matrix is:");
-    //     for (int i = 0; i < size; i++) {
-    //         for (int j = 0; j < size; j++) {
-    //             System.out.print(matrix[i][j] + " ");
-    //         }
-    //         System.out.println();
-    //     }
-    //     System.out.println("enter the key element");
-    //     int key= sc.nextInt();
-    //     search(matrix,key);
-
-    //     sc.close(); // Always a good practice
+    // // Input
+    // System.out.println("Enter the elements:");
+    // for (int i = 0; i < size; i++) {
+    // for (int j = 0; j < size; j++) {
+    // matrix[i][j] = sc.nextInt();
+    // }
     // }
 
-              
+    // // Output
+    // System.out.println("The matrix is:");
+    // for (int i = 0; i < size; i++) {
+    // for (int j = 0; j < size; j++) {
+    // System.out.print(matrix[i][j] + " ");
+    // }
+    // System.out.println();
+    // }
+    // System.out.println("enter the key element");
+    // int key= sc.nextInt();
+    // search(matrix,key);
 
-
-    //Print Reverse numbers in arrayList
-    // public static void main(String[] args) {
-    //     ArrayList<Integer> list=new ArrayList<>();
-    //     list.add(1);
-    //     list.add(2);
-    //     list.add(3);
-    //     list.add(4);
-    //     list.add(5);
-
-    //     for(int i=list.size()-1;i>=0;i--){
-    //         System.out.print(list.get(i)+" ");
-    //     }
-    //     System.out.println();
+    // sc.close(); // Always a good practice
     // }
 
+    // Spriral Matrix print
 
+    public static void PrintSprial(int matrix[][]) {
+        int startRow = 0;
+        int startCol = 0;
+        int endRow = matrix.length - 1;
+        int endcol = matrix[0].length - 1;
 
-    //Print Maximum nuber in ArrayList
-    // public static void main(String[] args) {
-    //     int max = Integer.MIN_VALUE;
-    //     List <Integer> list = new ArrayList<>();
+        while (startRow <= endRow && startCol <= endcol) {
+            // top boundary print
+            // i=row
+            // j= column
+            for (int j = 0; j <= endcol; j++) {
+                System.out.print(matrix[startRow][j] + " ");
+            }
+            // right boundary
+            for (int i = startRow + 1; i <= endRow; i++) {
+                System.out.print(matrix[i][endcol] + " ");
 
-    //     list.add(2);
-    //     list.add(4);
-    //     list.add(6);
-    //     list.add(1);
+            }
+            // bootom boundary
+            for (int j = endcol - 1; j >= startCol; j--) {
+                System.out.print(matrix[endRow][j] + " ");
 
-    //     for (int i = 0; i < list.size(); i++) {
-    //         if (max < list.get(i)) {
-    //             max = list.get(i);
-    //         }
-    //     }
+            }
+            //left boundary
+            for (int i = endRow - 1; i >= startRow + 1; i--) {
+                System.out.print(matrix[i][startCol] + " ");
+            }
+            startCol++;
+            startRow++;
+            endcol--;
+            endRow--;
 
-    //     System.out.println("Max element is: " + max);
-    // }
-
-
-
-    //swapping in between List elements
-
-    public static void swap(ArrayList <Integer> list, int indx1,int indx2){
-        int temp=list.get(indx1);
-        list.set(indx1,list.get(indx2));
-        list.set(indx2, temp);
-
+        }
+        System.out.println();
 
     }
+
     public static void main(String[] args) {
-        ArrayList<Integer> list= new ArrayList<>();
-        list.add(1);
-        list.add(7);
-        list.add(4);
-        list.add(8);
-        list.add(2);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the size");
+        int size = sc.nextInt();
+        int[][] matrix = new int[size][size];
+        // Input
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
 
-        int indx1=1, indx2=2;
-        System.out.println(list);
-        swap(list, indx1, indx2);
-        System.out.println(list);
+        // Output
+        System.out.println("The matrix is:");
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Sprial Matrix is : ");
+        PrintSprial(matrix);
 
     }
-    }
-   
-    
-
-
-
+}
