@@ -103,8 +103,8 @@ public class Array2D {
 
     // Diagonal Sum of elements
 
-    public static int  DiagonalSum(int matrix[][]){
-        int sum = 0;
+    // public static int  DiagonalSum(int matrix[][]){
+    //     int sum = 0;
 
         // for(int i=0; i<matrix.length;i++){
         //     for(int j=0;j<matrix[0].length;j++){
@@ -120,15 +120,38 @@ public class Array2D {
 
 
         //method 2
-        for(int i=0;i<matrix.length;i++){
-            sum+=matrix[i][i]; //primary diagonal
+    //     for(int i=0;i<matrix.length;i++){
+    //         sum+=matrix[i][i]; //primary diagonal
         
-        if (i != matrix.length- 1 - i) {
-            sum += matrix[i][matrix.length- 1 - i]; // secondary diagonal
-        }
-    }
-        return sum;
+    //     if (i != matrix.length- 1 - i) {
+    //         sum += matrix[i][matrix.length- 1 - i]; // secondary diagonal
+    //     }
+    // }
+    //     return sum;
     
+    // }
+
+
+    //find out  a Search Key in  Sorted Matrix
+    public static boolean StaircaseSearch(int [][]matrix,int key){
+        int row=0, col=matrix[0].length-1;
+
+        while (row < matrix.length && col >=0) {
+            if (matrix[row][col]==key ) {
+                System.out.println("Found key at (" + row +" ,"+col +")");
+                return true;
+                
+            }
+            else if(key < matrix[row][col]){
+                col--;
+
+            }else{
+                row ++;
+            }
+            
+        }
+        System.out.println("Key Not exist !");
+        return false;
     }
 
     public static void main(String[] args) {
@@ -137,7 +160,7 @@ public class Array2D {
         int size = sc.nextInt();
         int[][] matrix = new int[size][size];
         // Input
-        System.out.println("Enter the elements:");
+        System.out.println("Enter the element :");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 matrix[i][j] = sc.nextInt();
@@ -154,8 +177,14 @@ public class Array2D {
         }
         // System.out.println("Sprial Matrix is : ");
         // PrintSprial(matrix);
-        System.out.println("Diagonals sum of given matrix is :");
-        System.out.println(DiagonalSum(matrix));
+
+        // System.out.println("Diagonals sum of given matrix is :");
+        // System.out.println(DiagonalSum(matrix));
+
+        System.out.println("enter the key elements");
+        int key= sc.nextInt();
+        StaircaseSearch(matrix,key);
+        
 
     }
 
