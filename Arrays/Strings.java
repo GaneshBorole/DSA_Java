@@ -69,13 +69,28 @@ public class Strings {
         // printletters(fullname);
 
 
-        Scanner sc= new Scanner(System.in);
-        System.out.println("enter your String");
-        String str=sc.nextLine();
-        // System.out.println(isPalindrome(str));
-        System.out.println("The Shortest Path is :");
-        System.out.println(getShortestPath(str));
+        // Scanner sc= new Scanner(System.in);
+        // System.out.println("enter your String");
+        // String str=sc.nextLine();
+        // // System.out.println(isPalindrome(str));
+        // System.out.println("The Shortest Path is :");
+        // System.out.println(getShortestPath(str));
+
+
+        //Find out the largest string in the array By alphabetical order
+
+        String fruits[]={"apple","mango","banana"}; 
+        String largest=fruits[0];
+        for(int i=1; i<fruits.length; i++){
+            if(largest.compareTo(fruits[i])< 0){
+                largest =fruits[i];
+
+            }
+        }
+        System.out.print("Largest String in the array is : ");
+      System.out.println(largest);
 
     }
+
 
 }
