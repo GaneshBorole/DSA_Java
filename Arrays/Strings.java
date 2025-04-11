@@ -54,12 +54,31 @@ public class Strings {
 
 
        //ToUppercase Conversion
+       public static String ToUppercase(String str) {
+        StringBuilder sb = new StringBuilder("");
+        char ch = Character.toUpperCase(str.charAt(0));
+        sb.append(ch);
+    
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) == ' ' && i < str.length() - 1) {
+                sb.append(' ');
+                i++;
+                sb.append(Character.toUpperCase(str.charAt(i)));
+            } else {
+                sb.append(str.charAt(i));
+            }
+        }
+    
+        return sb.toString();
+    }
+    
 
     public static void main(String[] args) {
-        // Scanner sc= new Scanner(System.in);
-        // String name;
-        // name= sc.nextLine();
-        // System.out.println(name);
+        Scanner sc= new Scanner(System.in);
+        System.out.println("enter your string");
+        String str;
+        str= sc.nextLine();
+        
 
         // print string length
         // String fullname="Ganesh Borole";
@@ -79,6 +98,7 @@ public class Strings {
         // // System.out.println(isPalindrome(str));
         // System.out.println("The Shortest Path is :");
         // System.out.println(getShortestPath(str));
+        System.out.println(ToUppercase(str));
 
 
         //Find out the largest string in the array By alphabetical order
@@ -97,13 +117,14 @@ public class Strings {
     
 
 
-        StringBuilders
-    StringBuilder sb=new StringBuilder();
-    for(char ch='a';ch<='z';ch++){
-        sb.append(ch);
+//         StringBuilders
+//     StringBuilder sb=new StringBuilder();
+//     for(char ch='a';ch<='z';ch++){
+//         sb.append(ch);
 
-    }
-    System.out.println(sb.length());
+//     }
+//     System.out.println(sb.length());
+
 
 }
 
