@@ -30,27 +30,31 @@ public class Strings {
 
     //getShortest path
 
-    public static float getShortestPath(String str){
-        int x=0,y=0;
+    // public static float getShortestPath(String str){
+    //     int x=0,y=0;
 
-        for(int i=0;i<str.length();i++){
-            char dir=str.charAt(i);
+    //     for(int i=0;i<str.length();i++){
+    //         char dir=str.charAt(i);
 
-            if(dir == 'S'){ //South
-                y--;
-            }else if(dir == 'N'){ //North
-                y++;
-            }else if(dir == 'W'){ //West
-                x--;
-            }else{ //East
-                x++;
-            }
-        }
-        int X2=x*x;
-        int Y2=y*y;
-        return(float) Math.sqrt(X2+Y2);
+    //         if(dir == 'S'){ //South
+    //             y--;
+    //         }else if(dir == 'N'){ //North
+    //             y++;
+    //         }else if(dir == 'W'){ //West
+    //             x--;
+    //         }else{ //East
+    //             x++;
+    //         }
+    //     }
+    //     int X2=x*x;
+    //     int Y2=y*y;
+    //     return(float) Math.sqrt(X2+Y2);
 
-    }
+    // }
+
+
+       //ToUppercase Conversion
+
     public static void main(String[] args) {
         // Scanner sc= new Scanner(System.in);
         // String name;
@@ -79,18 +83,34 @@ public class Strings {
 
         //Find out the largest string in the array By alphabetical order
 
-        String fruits[]={"apple","mango","banana"}; 
-        String largest=fruits[0];
-        for(int i=1; i<fruits.length; i++){
-            if(largest.compareTo(fruits[i])< 0){
-                largest =fruits[i];
+    //     String fruits[]={"apple","mango","banana"}; 
+    //     String largest=fruits[0];
+    //     for(int i=1; i<fruits.length; i++){
+    //         if(largest.compareTo(fruits[i])< 0){
+    //             largest =fruits[i];
 
-            }
-        }
-        System.out.print("Largest String in the array is : ");
-      System.out.println(largest);
+    //         }
+    //     }
+    //     System.out.print("Largest String in the array is : ");
+    //     System.out.println(largest);
+
+    
+
+
+        StringBuilders
+    StringBuilder sb=new StringBuilder();
+    for(char ch='a';ch<='z';ch++){
+        sb.append(ch);
 
     }
+    System.out.println(sb.length());
+
+}
+
+
+     
+
+
 
 
 }
