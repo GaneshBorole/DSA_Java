@@ -54,31 +54,47 @@ public class Strings {
 
 
        //ToUppercase Conversion
-       public static String ToUppercase(String str) {
-        StringBuilder sb = new StringBuilder("");
-        char ch = Character.toUpperCase(str.charAt(0));
-        sb.append(ch);
+    //    public static String ToUppercase(String str) {
+    //     StringBuilder sb = new StringBuilder("");
+    //     char ch = Character.toUpperCase(str.charAt(0));
+    //     sb.append(ch);
     
-        for (int i = 1; i < str.length(); i++) {
-            if (str.charAt(i) == ' ' && i < str.length() - 1) {
-                sb.append(' ');
-                i++;
-                sb.append(Character.toUpperCase(str.charAt(i)));
-            } else {
-                sb.append(str.charAt(i));
-            }
-        }
+    //     for (int i = 1; i < str.length(); i++) {
+    //         if (str.charAt(i) == ' ' && i < str.length() - 1) {
+    //             sb.append(' ');
+    //             i++;
+    //             sb.append(Character.toUpperCase(str.charAt(i)));
+    //         } else {
+    //             sb.append(str.charAt(i));
+    //         }
+    //     }
     
-        return sb.toString();
-    }
+    //     return sb.toString();
+    // }
     
 
+    public static String compressString(String str){
+        String newStr=" ";
+        for(int i=0;i<str.length();i++){
+            Integer count=1;
+        while (i<str.length()-1 && str.charAt(i)== str.charAt(i+1)) {
+            count++;
+            i++;
+                
+            }
+            newStr +=str.charAt(i);
+            if(count > 1){
+                newStr +=count.toString();
+            }
+        }
+        return newStr;
+    }
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
         System.out.println("enter your string");
         String str;
         str= sc.nextLine();
-        
+        System.out.println("compressed string is :");
 
         // print string length
         // String fullname="Ganesh Borole";
@@ -98,7 +114,8 @@ public class Strings {
         // // System.out.println(isPalindrome(str));
         // System.out.println("The Shortest Path is :");
         // System.out.println(getShortestPath(str));
-        System.out.println(ToUppercase(str));
+        // System.out.println(ToUppercase(str));
+        System.out.println(compressString(str));
 
 
         //Find out the largest string in the array By alphabetical order
