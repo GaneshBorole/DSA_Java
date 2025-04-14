@@ -36,6 +36,17 @@ public class BitManipulation {
             int bitmask= ~1<<i;
             return n & bitmask;
         }
+        //update ith bit
+        public static int updateIthbit(int n,int i,int newbit){
+        //   if( newbit == 0){
+        //     return clearIthbit(n, i);
+        //   }else{
+        //     return setIthbit(n, i);
+        //   }
+        n=clearIthbit(n, i);
+        int bitmask= newbit << i;
+        return n|bitmask;
+        }
     public static void main(String[] args) {
         // System.out.println(5 & 6);
         // System.out.println(5 ^ 6);
@@ -46,11 +57,14 @@ public class BitManipulation {
         int n= sc.nextInt();
         System.out.println("enter the ith Bit");
         int i= sc.nextInt();
+        System.out.println("enter the newbit");
+        int newbit=sc.nextInt();
         // OddorEven(n);
         System.out.println("ith bit is :");
         // System.out.println(getIthbit(n, i));
         // System.out.println(setIthbit(n, i));
-        System.out.println(clearIthbit(n, i));
+        // System.out.println(clearIthbit(n, i));
+        System.out.println(updateIthbit(n, i, newbit));
     }
     
 }
