@@ -59,6 +59,24 @@ public class BitManipulation {
             int bitmask=a | b;
             return n & bitmask;
         }
+        public static boolean ispowerOfTWo(int n){
+            return (n & (n-1))==0;
+        }
+
+
+
+        public static int countsetBit(int n){
+            int count =0;
+            while (n > 0) {
+                if((n & 1)!=0){
+                    count++;
+                }
+                n=n>>1;
+
+                
+            }
+            return count;
+        }
     public static void main(String[] args) {
         // System.out.println(5 & 6);
         // System.out.println(5 ^ 6);
@@ -67,10 +85,10 @@ public class BitManipulation {
         Scanner sc= new Scanner(System.in);
         System.out.println("Enter your number");
         int n= sc.nextInt();
-        System.out.println("enter the i  Bit");
-        int i= sc.nextInt();
-        System.out.println("enter j");
-        int j=sc.nextInt();
+        // System.out.println("enter the i  Bit");
+        // int i= sc.nextInt();
+        // System.out.println("enter j");
+        // int j=sc.nextInt();
 
         // System.out.println("enter the newbit");
         // int newbit=sc.nextInt();
@@ -81,7 +99,9 @@ public class BitManipulation {
         // System.out.println(clearIthbit(n, i));
         // System.out.println(updateIthbit(n, i, newbit));
         // System.out.println(clearIthbit(n, i));
-        System.out.println(clearBitsInRange(n, i, i));
+        // System.out.println(clearBitsInRange(n, i, i));
+        // System.out.println(ispowerOfTWo(n));
+        System.out.println(countsetBit(n));
     }
     
 }
