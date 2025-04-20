@@ -60,13 +60,43 @@ public class Recursion1 {
         return sorted(arr,i+1);
 
     }
-    
+    //find first occurence of a number
+    public static int firstOccurence(int arr[],int key,int i){
+        if(i== arr.length-1){
+            return -1;
+        }
+        if(arr[i]== key){
+            return i;
+        }
+        return firstOccurence(arr, key, i+1);
+
+    }
+    //find last occurence of number in given array
+    public static int lastoccurence(int arr[],int key,int i){
+        if(i==arr.length){
+            return -1;
+        }
+        int isFound=lastoccurence(arr, key, i+1);
+        if(isFound == -1 && arr[i]==key){
+            return i;
+        }
+        return isFound;
+    }
+    //calculate power 
+    public static int power(int x,int n){
+        if(n == 0){
+            return 1;
+        }
+        int xnm1=power(x, n-1);
+        int xn=x* xnm1;
+        return xn;
+    }
 
 
     public static void main(String[] args) {
       Scanner sc= new Scanner(System.in);
-      System.out.println("enter n");
-      int n=sc.nextInt();
+    //   System.out.println("enter n");
+    //   int n=sc.nextInt();
 
 
         // printDesc(n);
@@ -74,9 +104,11 @@ public class Recursion1 {
         // System.out.println(Fact(n));
         // System.out.println(sum(n));
         //System.out.println(fibonacci(n));
-        int arr []={1,2,3,4,3};
-        System.out.println(sorted(arr, 0));
-
+        //int arr []={1,2,5,4,5,3};
+        // System.out.println(sorted(arr, 0));
+        // System.out.println(firstOccurence(arr, 5, 0));
+        // System.out.println(lastoccurence(arr, 5, 0));
+        System.out.println(power(3, 2));
     }
     
 }
