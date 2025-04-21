@@ -91,6 +91,20 @@ public class Recursion1 {
         int xn=x* xnm1;
         return xn;
     }
+    //optuimized power calculation
+    public static int OptimizedPower(int a,int n){
+        if(n==0){
+            return 1;
+        }
+       int halfseq= OptimizedPower(a, n/2)*OptimizedPower(a, n/2);
+
+       //n is odd
+       if(n% 2 !=0){
+        halfseq=a*halfseq;
+       }
+       return halfseq;
+
+    }
 
 
     public static void main(String[] args) {
@@ -108,7 +122,8 @@ public class Recursion1 {
         // System.out.println(sorted(arr, 0));
         // System.out.println(firstOccurence(arr, 5, 0));
         // System.out.println(lastoccurence(arr, 5, 0));
-        System.out.println(power(3, 2));
+        //System.out.println(power(3, 2));
+        System.out.println(OptimizedPower(3, 3));
     }
     
 }
