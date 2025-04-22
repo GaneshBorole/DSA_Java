@@ -14,6 +14,8 @@ public class Recursion2 {
         int totalways=fnm1+fnm2;
         return totalways;
     }
+
+
     //remove Duplicates in String
     public static void removeduplicates(String str,int idx,StringBuilder newStr,boolean map[]){
         if(idx==str.length()){
@@ -29,6 +31,8 @@ public class Recursion2 {
             removeduplicates(str, idx+1, newStr.append(currChar), map);
         }
     }
+
+
     //Friends pairing Problem
     public static int friendspairing(int n){
         if(n==1 || n==2){
@@ -44,14 +48,34 @@ public class Recursion2 {
 
     }
 
+    //Binary string problem
+
+    public static void BinaryString(int n, int lastPlace, String str) {
+        // Base case: if n == 0, we have a valid binary string
+        if (n == 0) {
+            System.out.println(str);
+            return; 
+        }
+    
+        // Append '0' and make recursive call
+        BinaryString(n - 1, 0, str + "0");
+    
+        // Only append '1' if last placed digit was not 1
+        if (lastPlace == 0) {
+            BinaryString(n - 1, 1, str + "1");
+        }
+    }
+    
+
     public static void main(String[] args) {
          Scanner sc= new Scanner(System.in);
-         System.out.println("enter the n");
-        int n= sc.nextInt();
+        //  System.out.println("enter the n");
+        // int n= sc.nextInt();
         // System.out.println("Total ways to tile 2 x " + n + " board: " + TailingProblem(n));
     //     String str="apnnnacollege";
     //   removeduplicates(str, 0, new StringBuilder(" "), new boolean[26]);
-         System.out.println(friendspairing(n));
+        // System.out.println(friendspairing(n));
+        BinaryString(3,0," ");
        
     }
     
