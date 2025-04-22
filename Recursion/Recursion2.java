@@ -29,13 +29,29 @@ public class Recursion2 {
             removeduplicates(str, idx+1, newStr.append(currChar), map);
         }
     }
+    //Friends pairing Problem
+    public static int friendspairing(int n){
+        if(n==1 || n==2){
+            return n;
+        }
+        int fnm1=friendspairing(n-1);//single
+        int fnm2=friendspairing(n-2);//pairing
+        int pairways=(n-1)*fnm2;
+        
+        //totalways
+        int totalways=fnm1+pairways;
+        return totalways;
+
+    }
+
     public static void main(String[] args) {
-        // Scanner sc= new Scanner(System.in);
-        // System.out.println("enter the n");
-        // int n= sc.nextInt();
+         Scanner sc= new Scanner(System.in);
+         System.out.println("enter the n");
+        int n= sc.nextInt();
         // System.out.println("Total ways to tile 2 x " + n + " board: " + TailingProblem(n));
-        String str="apnnnacollege";
-      removeduplicates(str, 0, new StringBuilder(" "), new boolean[26]);
+    //     String str="apnnnacollege";
+    //   removeduplicates(str, 0, new StringBuilder(" "), new boolean[26]);
+         System.out.println(friendspairing(n));
        
     }
     
