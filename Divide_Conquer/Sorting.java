@@ -48,6 +48,9 @@ public class Sorting {
         }
     }
 
+
+
+
     //Quick sort
     //time complexity: O(nlogn)
 
@@ -82,6 +85,44 @@ public class Sorting {
         return i + 1;
     }
     
+
+
+    //Search in Roated sorted array
+
+    public static int search(int arr[],int tar,int si,int ei){
+        if(si > ei){
+            return -1;
+        }
+        int mid=si+(ei-si)/2;
+
+        //cases
+        if(arr[mid]==tar){
+            return mid;
+        }
+        //mid on Line1
+        if(arr[si]<=arr[mid]){
+            //case a:left
+            if(arr[si]<= tar && tar <= arr[mid]){
+                return search(arr, tar, si, mid-1);
+            }else{
+             //case b:right
+             return search(arr, tar, mid+1, ei);
+            }
+
+        }
+        //mid on Line2
+        else{
+            //case c: right part
+            if(arr[mid]<= tar && tar <=arr[ei]){
+                return search(arr, tar, mid+1, ei);
+            }else{
+                //case d:left right
+                return search(arr, tar, si, mid-1);
+            }
+
+        }
+
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -94,13 +135,19 @@ public class Sorting {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = sc.nextInt();
         }
+        
+        System.out.println("enter the target");
+        int target=sc.nextInt();
+        int tarIndx=search(arr, target, 0, arr.length-1);
+        System.out.println("target element at index :");
+        System.out.println(tarIndx);
 
         //Mergesort(arr, 0, arr.length - 1); // fixed method call
-       quicksort(arr, 0, arr.length-1);
+      // quicksort(arr, 0, arr.length-1);
 
-        System.out.println("Sorted array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
+        // System.out.println("Sorted array:");
+        // for (int num : arr) {
+        //     System.out.print(num + " ");
+        // }
     }
 }
