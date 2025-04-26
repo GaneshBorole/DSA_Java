@@ -2,6 +2,8 @@ package Divide_Conquer;
 import java.util.*;
 
 public class Sorting {
+    // Merge sort
+    // Time complexity: O(nlogn)
 
     public static void Mergesort(int arr[], int si, int ei) {
         // base case
@@ -46,6 +48,40 @@ public class Sorting {
         }
     }
 
+    //Quick sort
+    //time complexity: O(nlogn)
+
+    public static void quicksort(int arr[], int si, int ei) {
+        if (si >= ei) {
+            return;
+        }
+        int pidx = partition(arr, si, ei);
+        quicksort(arr, si, pidx - 1);
+        quicksort(arr, pidx + 1, ei);
+    }
+    
+    public static int partition(int arr[], int si, int ei) {
+        int pivot = arr[ei];
+        int i = si - 1;
+    
+        for (int j = si; j < ei; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    
+        // place pivot at the correct position
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[ei];
+        arr[ei] = temp;
+    
+        return i + 1;
+    }
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -59,7 +95,8 @@ public class Sorting {
             arr[i] = sc.nextInt();
         }
 
-        Mergesort(arr, 0, arr.length - 1); // fixed method call
+        //Mergesort(arr, 0, arr.length - 1); // fixed method call
+       quicksort(arr, 0, arr.length-1);
 
         System.out.println("Sorted array:");
         for (int num : arr) {
