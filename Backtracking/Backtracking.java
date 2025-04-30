@@ -35,6 +35,20 @@ public class Backtracking {
         findsubsets(str, ans, i+1);
 
     }
+
+    //find permutations
+    public static void findpermutations(String str,String ans){
+        if(str.length()==0){
+            System.out.println(ans);
+            return;
+        }
+        //recursion
+        for(int i=0;i<str.length();i++){
+            char curr=str.charAt(i);
+            String rest=str.substring(0,i)+str.substring(i+1);
+            findpermutations(rest, ans+curr);    
+        }
+    }
     public static void main(String[] args) {
         // int arr[]=new int[5];
         // changearr(arr, 0, 1);
@@ -43,7 +57,8 @@ public class Backtracking {
         Scanner sc=new Scanner(System.in);
         System.out.println("enter your string");
         String str=sc.nextLine();
-        findsubsets(str, " ", 0);
+        //findsubsets(str, " ", 0);
+        findpermutations(str, "");
 
 
     }
