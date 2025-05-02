@@ -61,6 +61,8 @@ public class Backtracking {
 
 
     //N-Queens Problems
+
+    
     public static boolean isSafe(char[][] board, int row, int col) {
         // vertically up
         for (int i = row - 1; i >= 0; i--) {
@@ -110,6 +112,25 @@ public static void printBoard(char board[][]){
     }
 }
 
+
+
+//Grid ways problem
+
+
+public static int gridways(int i,int j,int n,int m){
+    //base case
+    if(i== n-1 && j==m-1){ //condition for last cell
+        return 1;
+    }else if(i==n || j==m){//boundary cross condition
+        return 0;
+    }
+    int w1=gridways(i+1, j, n, m);
+    int w2=gridways(i, j+1, n, m);
+    int ways=w1+w2;
+    return ways;
+}
+
+
     public static void main(String[] args) {
         // int arr[]=new int[5];
         // changearr(arr, 0, 1);
@@ -121,17 +142,21 @@ public static void printBoard(char board[][]){
         // //findsubsets(str, " ", 0);
         // findpermutations(str, "");
 
-        Scanner sc= new Scanner(System.in);
-        System.out.println("enter the size");
-        int n=sc.nextInt();
-        char board[][]= new char [n][n];
-        //initialize
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                board[i][j]= 'x';
-            }
-        }
-        nQueens(board, 0);
+        // Scanner sc= new Scanner(System.in);
+        // System.out.println("enter the size");
+        // int n=sc.nextInt();
+        // char board[][]= new char [n][n];
+        // //initialize
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<n;j++){
+        //         board[i][j]= 'x';
+        //     }
+        // }
+        // nQueens(board, 0);
+
+        int n=3 ,m=3;
+        System.out.println("total number of ways :");
+        System.out.println(gridways(0,0, n, m));
 
     }
     
