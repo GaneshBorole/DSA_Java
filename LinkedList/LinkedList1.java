@@ -118,20 +118,36 @@ public int removelast(){
 
 }
 
+//search key in a LL
+public int iterativeSerach(int key){ //O(n)
+    Node temp=head;
+    int i=0;
+    while (temp != null) {
+        if(temp.data==key){
+            return i;
+        }
+        temp=temp.next;
+        i++;
+        
+    }
+    return -1;//key doesn't exist
+
+}
+
     public static void main(String[] args) {
         LinkedList1 ll = new LinkedList1();
         
         ll.AddFirst(2);
         ll.AddFirst(1);
-        ll.Addlast(3);
         ll.Addlast(4);
-        ll.Addinmiddle(2,9);
+        ll.Addlast(5);
+        ll.Addinmiddle(2,3);
         ll.print();
        // System.out.println(ll.size);
-       ll.removeFirst();
-       ll.print();
-       ll.removelast();
-       ll.print();
+    //    ll.removeFirst();
+    //    ll.print();
+    //    ll.removelast();
+       System.out.println(ll.iterativeSerach(6));
     }
 }
     
