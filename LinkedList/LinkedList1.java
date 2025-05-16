@@ -151,6 +151,8 @@ public int recursiveSearch(int key){
  return helper(head, key);
 }
 
+//Reverse a LL
+
 public void reverseLL(){
     Node prev=null;
     Node curr=tail=head;
@@ -165,23 +167,106 @@ public void reverseLL(){
     }
     head=prev;
 }
+
+
+
+
+//delete Nth index from N
+public void deleteNthfromN(int n){
+    int sz=0;
+    Node temp=head;
+    while (temp != null) {
+        temp=temp.next;
+        sz++;
+        
+    }
+    if(n == sz){
+        head=head.next;
+        return;
+
+    }
+    //sz-n
+    int i=1;
+    int iTofind=sz-n;
+    Node prev=head;
+    while (i < iTofind) {
+        prev=prev.next;
+        i++;
+        
+    }
+    prev.next=prev.next.next;
+    return;
+
+}
+
+
+
+//palindrome of LL
+//slow-fast approach
+public Node findmid(Node head){
+    Node slow= head;
+    Node fast=head;
+
+    while (fast != null && fast.next != null) {
+        slow=slow.next;//+1
+        fast=fast.next.next;//+2   
+    }
+    return slow;//slow is my mid element of LL
+}
+
+public boolean checkPalindrome(){
+    if(head == null || head.next == null){
+        return true;
+    }
+    //1.find mid
+    Node midNode=findmid(head);
+    //2.reverse the 2nd half
+    Node prev=null;
+    Node curr=midNode;
+    Node next;
+    while (curr != null) {
+        next=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=next;
+        
+    }
+    Node right= prev;//right half head
+    Node left=head;//
+
+    //check left half & right half
+    while (right != null) {
+        if(left.data != right.data){
+            return false;
+        }
+        left=left.next;
+        right=right.next;
+        
+    }
+    return true;
+
+}
     public static void main(String[] args) {
         LinkedList1 ll = new LinkedList1();
         
-        ll.AddFirst(2);
-        ll.AddFirst(1);
-        ll.Addlast(4);
-        ll.Addlast(5);
-        ll.Addinmiddle(2,3);
+        ll.Addlast(1);
+        ll.Addlast(2);
+        ll.Addlast(2);
+        ll.Addlast(1);
+        //ll.Addinmiddle(2,3);
         ll.print();
        // System.out.println(ll.size);
     //    ll.removeFirst();
     //    ll.print();
     //    ll.removelast();
-      // System.out.println(ll.iterativeSerach(6));
-      //System.out.println(ll.recursiveSearch(3));
-      ll.reverseLL();
-      ll.print();
+    // System.out.println(ll.iterativeSerach(6));
+   //System.out.println(ll.recursiveSearch(3));
+    //   ll.reverseLL();
+    //   ll.print();
+   //ll.deleteNthfromN(3);
+   //ll.print();
+   System.out.println(ll.checkPalindrome());
+
     }
 }
     
