@@ -118,7 +118,7 @@ public int removelast(){
 
 }
 
-//search key in a LL
+//search key in a LL(iterative)
 public int iterativeSerach(int key){ //O(n)
     Node temp=head;
     int i=0;
@@ -133,7 +133,38 @@ public int iterativeSerach(int key){ //O(n)
     return -1;//key doesn't exist
 
 }
+//search element(recursion)
+public int helper(Node head,int key){ // O(n)
+    if(head == null){
+        return -1;
+    }
+    if(head.data== key){
+        return 0;
+    }
+    int idx= helper(head.next, key);
+    if(idx== -1){
+        return -1;
+    }
+    return idx+1;
+}
+public int recursiveSearch(int key){
+ return helper(head, key);
+}
 
+public void reverseLL(){
+    Node prev=null;
+    Node curr=tail=head;
+    Node next;
+
+    while (curr != null) {
+        next=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=next;
+        
+    }
+    head=prev;
+}
     public static void main(String[] args) {
         LinkedList1 ll = new LinkedList1();
         
@@ -147,7 +178,10 @@ public int iterativeSerach(int key){ //O(n)
     //    ll.removeFirst();
     //    ll.print();
     //    ll.removelast();
-       System.out.println(ll.iterativeSerach(6));
+      // System.out.println(ll.iterativeSerach(6));
+      //System.out.println(ll.recursiveSearch(3));
+      ll.reverseLL();
+      ll.print();
     }
 }
     
