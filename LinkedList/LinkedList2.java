@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.LinkedList;
+
 public class LinkedList2 {
 
     public static Node head; // Declare head here
@@ -70,5 +72,16 @@ public static void removecycle(){
         System.out.println(isCycle()); 
         removecycle();
         System.out.println(isCycle());
+
+        
+    //3 Linkedlist using jcf
+        LinkedList<Integer>ll=new LinkedList<>();
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addFirst(0);
+        System.out.println(ll);
+        ll.removeLast();
+        ll.removeFirst();
+        System.out.println(ll);
     }
 }
