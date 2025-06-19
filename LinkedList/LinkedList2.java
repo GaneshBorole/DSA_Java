@@ -425,19 +425,40 @@ public class LinkedList2 {
     }
 
 
+    public void reverse(){
+        Node curr=head;
+        Node prev=null;
+        Node next;
+    
+    while( curr != null){
+            next=curr.next;
+            curr.next=prev;
+            curr.prev=next;
+
+            prev=curr;
+            curr=next;
+    }
+    head=prev;
+    }
 
     public static void main(String[] args) {
     LinkedList2 dll=new LinkedList2();
         dll.addfirst(3);
         dll.addfirst(2);
         dll.addfirst(1);
-
+        
         dll.print();
-        System.out.println(dll.size);
-
-        dll.removefirst(size);
+        dll.reverse();
         dll.print();
-        System.out.println(dll.size);
+
+
+
+        // dll.print();
+        // System.out.println(dll.size);
+
+        // dll.removefirst(size);
+        // dll.print();
+        // System.out.println(dll.size);
         
     }
 
