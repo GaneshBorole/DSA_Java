@@ -177,39 +177,63 @@ public class Stack1 {
     
 
     // 4. Stock Span Problem
-    public static void stockspan(int stock[],int span[]){
-        Stack<Integer> s=new Stack<>();
-        span[0]=1;
-        s.push(0);
+//     public static void stockspan(int stock[],int span[]){
+//         Stack<Integer> s=new Stack<>();
+//         span[0]=1;
+//         s.push(0);
 
-        for(int i=1;i<stock.length;i++){
-            int currprice=stock[i];
+//         for(int i=1;i<stock.length;i++){
+//             int currprice=stock[i];
 
-            while (!s.empty() && currprice > stock[s.peek()]) {
-                s.pop();  
-            }
-            if(s.isEmpty()){
-                span[i]=i+1;
-            }else{
-                int prevHigh=s.peek();
-                span[i]=i-prevHigh;
+//             while (!s.empty() && currprice > stock[s.peek()]) {
+//                 s.pop();  
+//             }
+//             if(s.isEmpty()){
+//                 span[i]=i+1;
+//             }else{
+//                 int prevHigh=s.peek();
+//                 span[i]=i-prevHigh;
 
-            }
-            s.push(i);
+//             }
+//             s.push(i);
+//         }
+//     }
+//         public static void main(String[] args) {
+//         int stock[]={100,80,60,70,60,85,100};
+//         int span[]=new int[stock.length];
+//         stockspan(stock,span);
+
+//         for(int i=0;i<span.length;i++){
+//             System.out.print(span[i]+" ");
+//         }
+//     }
+
+
+
+
+
+//5.Next Greater Problem 
+public static void main(String[] args) {
+    int arr[]={6,8,0,1,3};
+    Stack<Integer> s= new Stack<>();
+    int nextGreater[]=new int[arr.length];
+
+    for(int i <arr.length-1; i>=0;i--){
+        while (!s.empty() && arr[s.peek()] <= arr[i]) {
+            s.pop();
+
+        if(s.isEmpty()){
+            nextGreater[i]=-1;
+        }else{
+            nextGreater[i]=arr[s.peek()];
         }
 
-    }
-
-    public static void main(String[] args) {
-        int stock[]={100,80,60,70,60,85,100};
-        int span[]=new int[stock.length];
-        stockspan(stock,span);
-
-        for(int i=0;i<span.length;i++){
-            System.out.print(span[i]+" ");
+            
         }
     }
 }
+ }
+
 
 
     
