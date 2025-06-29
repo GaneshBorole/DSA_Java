@@ -63,59 +63,102 @@ public class Queue1 {
 //         }
 //     }
 
-    //Queue using Linked list
-    static class Node{
-        int data;
-        Node next;
 
-        Node(int data){
-            this.data=data;
-            this.next=null;
-        }
-    }
+
+    //1.Queue using Linked list
+    // static class Node{
+    //     int data;
+    //     Node next;
+
+    //     Node(int data){
+    //         this.data=data;
+    //         this.next=null;
+    //     }
+    // }
+    // static class Queue {
+    //     static Node head=null;
+    //     static Node tail=null;
+
+    // public static boolean isEmpty(){
+    //     return head==null && tail==null;
+    // }
+    // //add
+    // public static void add(int data){
+    //     Node newNode =new Node(data);
+    //     if(head==null){
+    //         head=tail=newNode;
+    //         return;
+    //     }
+    //     tail.next=newNode;
+    //     tail=newNode;
+    // }
+    // //remove
+    // public static int remove(){
+    //     if(isEmpty()){
+    //         System.out.println("queue is empty");
+    //         return -1;
+    //     }
+    //     int front=head.data;
+    //     if(tail ==head){
+    //         tail=head=null;
+
+    //     }else{
+    //         head=head.next;
+    //     }
+    //     return front;
+    // }
+    //  // Peek
+    //     public int peek() {
+    //         if (isEmpty()) {
+    //             System.out.println("Queue is empty");
+    //             return -1;
+    //         }
+    //         return head.data;
+    //     }
+    //  }
+        
+    
+
+    //2.Queue using 2 Stacks
     static class Queue {
-        static Node head=null;
-        static Node tail=null;
+        Stack<Integer> s1 = new Stack<>();
+        Stack<Integer> s2 = new Stack<>();
 
-    public static boolean isEmpty(){
-        return head==null && tail==null;
-    }
-    //add
-    public static void add(int data){
-        Node newNode =new Node(data);
-        if(head==null){
-            head=tail=newNode;
-            return;
+        public boolean isEmpty() {
+            return s1.isEmpty();
         }
-        tail.next=newNode;
-        tail=newNode;
-    }
-    //remove
-    public static int remove(){
-        if(isEmpty()){
-            System.out.println("queue is empty");
-            return -1;
-        }
-        int front=head.data;
-        if(tail ==head){
-            tail=head=null;
 
-        }else{
-            head=head.next;
+        // add
+        public void add(int data) {
+            while (!s1.isEmpty()) {
+                s2.push(s1.pop());
+            }
+
+            s1.push(data);
+
+            while (!s2.isEmpty()) {
+                s1.push(s2.pop());
+            }
         }
-        return front;
-    }
-     // Peek
+
+        // remove
+        public int remove() {
+            if (isEmpty()) {
+                System.out.println("Queue is empty");
+                return -1;
+            }
+            return s1.pop();
+        }
+
+        // peek
         public int peek() {
             if (isEmpty()) {
                 System.out.println("Queue is empty");
                 return -1;
             }
-            return head.data;
+            return s1.peek();
         }
-     }
-        
-    
+    }
     public static void main(String[] args) {
         Queue q= new Queue();
         q.add(1);
