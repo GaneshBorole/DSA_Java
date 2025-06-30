@@ -162,88 +162,119 @@ public class Queue1 {
     // }
 
 
+
+
+
     //3.Stack using 2 Queue
  
-    static class Stack {
-        static Queue<Integer> q1 = new LinkedList<>();
-        static Queue<Integer> q2 = new LinkedList<>();
+    // static class Stack {
+    //     static Queue<Integer> q1 = new LinkedList<>();
+    //     static Queue<Integer> q2 = new LinkedList<>();
 
-        // Check if stack is empty
-        public static boolean isEmpty() {
-            return q1.isEmpty() && q2.isEmpty();
+    //     // Check if stack is empty
+    //     public static boolean isEmpty() {
+    //         return q1.isEmpty() && q2.isEmpty();
+    //     }
+
+    //     // Push element to the stack
+    //     public static void push(int data) {
+    //         if (!q1.isEmpty()) {
+    //             q1.add(data);
+    //         } else {
+    //             q2.add(data);
+    //         }
+    //     }
+
+    //     // Pop element from the stack
+    //     public static int pop() {
+    //         if (isEmpty()) {
+    //             return -1;
+    //         }
+
+    //         int top = -1;
+
+    //         if (!q1.isEmpty()) {
+    //             while (!q1.isEmpty()) {
+    //                 top = q1.remove();
+    //                 if (q1.isEmpty()) {
+    //                     break;
+    //                 }
+    //                 q2.add(top);
+    //             }
+    //         } else {
+    //             while (!q2.isEmpty()) {
+    //                 top = q2.remove();
+    //                 if (q2.isEmpty()) {
+    //                     break;
+    //                 }
+    //                 q1.add(top);
+    //             }
+    //         }
+
+    //         return top;
+    //     }
+
+    //     // Peek top element of the stack
+    //     public static int peek() {
+    //         if (isEmpty()) {
+    //             return -1;
+    //         }
+
+    //         int top = -1;
+
+    //         if (!q1.isEmpty()) {
+    //             while (!q1.isEmpty()) {
+    //                 top = q1.remove();
+    //                 q2.add(top);
+    //             }
+    //         } else {
+    //             while (!q2.isEmpty()) {
+    //                 top = q2.remove();
+    //                 q1.add(top);
+    //             }
+    //         }
+
+    //         return top;
+    //     }
+    // }
+
+
+
+
+
+    //4.First non-repeating lettter in a Stream of characters
+public static void printNonrepeating(String str){
+    int freq[]= new int[26];//'a-Z'
+    Queue <Character> q= new LinkedList<>();
+
+    for(int i=0;i<str.length();i++){
+        char ch=str.charAt(i);
+        q.add(ch);
+        freq[ch -'a']++;
+
+        while (!q.isEmpty() && freq[q.peek() -'a']>1) {
+            q.remove();
         }
-
-        // Push element to the stack
-        public static void push(int data) {
-            if (!q1.isEmpty()) {
-                q1.add(data);
-            } else {
-                q2.add(data);
-            }
-        }
-
-        // Pop element from the stack
-        public static int pop() {
-            if (isEmpty()) {
-                return -1;
-            }
-
-            int top = -1;
-
-            if (!q1.isEmpty()) {
-                while (!q1.isEmpty()) {
-                    top = q1.remove();
-                    if (q1.isEmpty()) {
-                        break;
-                    }
-                    q2.add(top);
-                }
-            } else {
-                while (!q2.isEmpty()) {
-                    top = q2.remove();
-                    if (q2.isEmpty()) {
-                        break;
-                    }
-                    q1.add(top);
-                }
-            }
-
-            return top;
-        }
-
-        // Peek top element of the stack
-        public static int peek() {
-            if (isEmpty()) {
-                return -1;
-            }
-
-            int top = -1;
-
-            if (!q1.isEmpty()) {
-                while (!q1.isEmpty()) {
-                    top = q1.remove();
-                    q2.add(top);
-                }
-            } else {
-                while (!q2.isEmpty()) {
-                    top = q2.remove();
-                    q1.add(top);
-                }
-            }
-
-            return top;
+        if(q.isEmpty()){
+            System.out.print(-1+" ");
+        }else{
+            System.out.print(q.peek()+" ");
         }
     }
-
+System.out.println();
+}
     public static void main(String[] args) {
-        Stack s = new Stack();
-        s.push(1);
-        s.push(2);
-        s.push(3);
+        String str="aabccxb";
+       printNonrepeating(str);
 
-        while (!s.isEmpty()) {
-            System.out.println("Top: " + s.peek());
-            s.pop();
-        }
+        // Stack s = new Stack();
+        // s.push(1);
+        // s.push(2);
+        // s.push(3);
+
+        // while (!s.isEmpty()) {
+        //     System.out.println("Top: " + s.peek());
+        //     s.pop();
+        // }
     }
 }
