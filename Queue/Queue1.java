@@ -3,6 +3,8 @@ import java.util.*;
 
 
 
+
+
 public class Queue1 {
 //     static class Queue {
 //         int[] arr;
@@ -283,6 +285,20 @@ public static void interLeave(Queue<Integer> q){
 
 }
 
+//6.Queue Reverse
+public static void reverse(Queue<Integer> q){
+    Stack<Integer> s=new Stack<>();
+
+    while (!q.isEmpty()) {
+        s.push(q.remove());
+        
+    }
+    while (!s.isEmpty()) {
+        q.add(s.pop());
+        
+    }
+}
+
     public static void main(String[] args) {
         Queue<Integer> q=new LinkedList<>();
         q.add(1);
@@ -296,7 +312,8 @@ public static void interLeave(Queue<Integer> q){
         q.add(9);
         q.add(10);
 
-        interLeave(q);
+        // interLeave(q);
+        reverse(q);
 
 
     //     String str="aabccxb";
