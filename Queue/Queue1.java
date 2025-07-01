@@ -242,39 +242,75 @@ public class Queue1 {
 
 
 
+   
     //4.First non-repeating lettter in a Stream of characters
-public static void printNonrepeating(String str){
-    int freq[]= new int[26];//'a-Z'
-    Queue <Character> q= new LinkedList<>();
+// public static void printNonrepeating(String str){
+//     int freq[]= new int[26];//'a-Z'
+//     Queue <Character> q= new LinkedList<>();
 
-    for(int i=0;i<str.length();i++){
-        char ch=str.charAt(i);
-        q.add(ch);
-        freq[ch -'a']++;
+//     for(int i=0;i<str.length();i++){
+//         char ch=str.charAt(i);
+//         q.add(ch);
+//         freq[ch -'a']++;
 
-        while (!q.isEmpty() && freq[q.peek() -'a']>1) {
-            q.remove();
-        }
-        if(q.isEmpty()){
-            System.out.print(-1+" ");
-        }else{
-            System.out.print(q.peek()+" ");
-        }
-    }
-System.out.println();
+//         while (!q.isEmpty() && freq[q.peek() -'a']>1) {
+//             q.remove();
+//         }
+//         if(q.isEmpty()){
+//             System.out.print(-1+" ");
+//         }else{
+//             System.out.print(q.peek()+" ");
+//         }
+//     }
+// System.out.println();
+// }
+
+
+
+//5.Interleave two halve of queue
+public static void interLeave(Queue<Integer> q){
+    Queue<Integer> firsthalf=new LinkedList<>();
+    int size=q.size();
+
+   for(int i=0;i<size/2;i++){
+    firsthalf.add(q.remove());
+   }
+   while (!firsthalf.isEmpty()) {
+    q.add(firsthalf.remove());
+    q.add(q.remove());
+    
+   }
+
 }
+
     public static void main(String[] args) {
-        String str="aabccxb";
-       printNonrepeating(str);
+        Queue<Integer> q=new LinkedList<>();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        q.add(4);
+        q.add(5);
+        q.add(6);
+        q.add(7);
+        q.add(8);
+        q.add(9);
+        q.add(10);
+
+        interLeave(q);
+
+
+    //     String str="aabccxb";
+    //    printNonrepeating(str);
 
         // Stack s = new Stack();
         // s.push(1);
         // s.push(2);
         // s.push(3);
 
-        // while (!s.isEmpty()) {
-        //     System.out.println("Top: " + s.peek());
-        //     s.pop();
-        // }
+        while (!q.isEmpty()) {
+            System.out.println(q.remove()+" ");
+          
+        }
+        System.out.println();
     }
 }
