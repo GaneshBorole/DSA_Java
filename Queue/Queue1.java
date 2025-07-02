@@ -288,7 +288,6 @@ public class Queue1 {
 
 
 
-
 // //6.Queue Reverse
 // public static void reverse(Queue<Integer> q){
 //     Stack<Integer> s=new Stack<>();
@@ -327,6 +326,8 @@ static class Stack {
         }
     }
 
+
+
     //8.Queue Using Deque
     static class Queue {
         Deque<Integer> deque=new LinkedList<>();
@@ -346,9 +347,7 @@ static class Stack {
         public boolean isEmpty() {
             return deque.isEmpty();
         }
-
-    
-        
+ 
     }
 
     public static void main(String[] args) {
