@@ -270,20 +270,24 @@ public class Queue1 {
 
 
 //5.Interleave two halve of queue
-public static void interLeave(Queue<Integer> q){
-    Queue<Integer> firsthalf=new LinkedList<>();
-    int size=q.size();
+// public static void interLeave(Queue<Integer> q){
+//     Queue<Integer> firsthalf=new LinkedList<>();
+//     int size=q.size();
 
-   for(int i=0;i<size/2;i++){
-    firsthalf.add(q.remove());
-   }
-   while (!firsthalf.isEmpty()) {
-    q.add(firsthalf.remove());
-    q.add(q.remove());
+//    for(int i=0;i<size/2;i++){
+//     firsthalf.add(q.remove());
+//    }
+//    while (!firsthalf.isEmpty()) {
+//     q.add(firsthalf.remove());
+//     q.add(q.remove());
     
-   }
+//    }
 
-}
+// }
+
+
+
+
 
 // //6.Queue Reverse
 // public static void reverse(Queue<Integer> q){
@@ -302,7 +306,7 @@ public static void interLeave(Queue<Integer> q){
 
 
 
-
+//7.stack using Deque
 static class Stack {
         Deque<Integer> deque = new LinkedList<>();
 
@@ -323,6 +327,30 @@ static class Stack {
         }
     }
 
+    //8.Queue Using Deque
+    static class Queue {
+        Deque<Integer> deque=new LinkedList<>();
+
+        public void add(int data) {
+            deque.addLast(data); // Add to the end
+        }
+
+        public int remove() {
+            return deque.removeFirst(); // Remove from the end
+        }
+
+        public int peek() {
+            return deque.getFirst(); // Peek from the end
+        }
+
+        public boolean isEmpty() {
+            return deque.isEmpty();
+        }
+
+    
+        
+    }
+
     public static void main(String[] args) {
         Stack s = new Stack();  // ✅ Corrected here
         s.push(1);
@@ -332,6 +360,16 @@ static class Stack {
         System.out.println(s.pop());
         System.out.println(s.pop());
         System.out.println(s.pop());
+
+
+        Queue q=new Queue();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        System.out.println("peek"+q.peek());
+        System.out.println(q.remove());
+        System.out.println(q.remove());
+        System.out.println(q.remove());
     
 
 
