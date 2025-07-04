@@ -41,7 +41,8 @@ public class Greedy {
         
         
 
-        //2.Fractional knapsack
+
+        //2.Fractional knapsack 
 
         int val []={60,100,120};
         int weight[]={10,20,30};
@@ -49,6 +50,7 @@ public class Greedy {
 
             double ratio[][]=new double[val.length][2];
             //0th column ratio ;1st column =>ratio
+            //ratio=value/weight
             for(int i=0;i<val.length;i++){
                 ratio[i][0]=i;
                 ratio[i][1]=val[i]/(double)weight[i];
@@ -72,6 +74,7 @@ public class Greedy {
                     capacity=0;
                     break;
                 }
+
             }
             System.out.println("final value :"+finalVal);
     }
