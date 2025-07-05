@@ -44,38 +44,53 @@ public class Greedy {
 
         //2.Fractional knapsack 
 
-        int val []={60,100,120};
-        int weight[]={10,20,30};
-        int W= 50;
+        // int val []={60,100,120};
+        // int weight[]={10,20,30};
+        // int W= 50;
 
-            double ratio[][]=new double[val.length][2];
-            //0th column ratio ;1st column =>ratio
-            //ratio=value/weight
-            for(int i=0;i<val.length;i++){
-                ratio[i][0]=i;
-                ratio[i][1]=val[i]/(double)weight[i];
+        //     double ratio[][]=new double[val.length][2];
+        //     //0th column ratio ;1st column =>ratio
+        //     //ratio=value/weight
+        //     for(int i=0;i<val.length;i++){
+        //         ratio[i][0]=i;
+        //         ratio[i][1]=val[i]/(double)weight[i];
 
-            }
-            //Ascending order sort
-            Arrays.sort(ratio,Comparator.comparingDouble(o ->o[1]));
-            int capacity= W;
-            int finalVal=0;
+        //     }
+        //     //Ascending order sort
+        //     Arrays.sort(ratio,Comparator.comparingDouble(o ->o[1]));
+        //     int capacity= W;
+        //     int finalVal=0;
 
-            for(int i=ratio.length-1;i>=0;i--){
-                int idx=(int)ratio[i][0];
+        //     for(int i=ratio.length-1;i>=0;i--){
+        //         int idx=(int)ratio[i][0];
 
-                if(capacity >= weight[idx]){ //full include
-                    finalVal +=val[idx];
-                    capacity -=weight[idx];
+        //         if(capacity >= weight[idx]){ //full include
+        //             finalVal +=val[idx];
+        //             capacity -=weight[idx];
 
-                }else{
-                    //include fractional item
-                    finalVal += (ratio[i][1]* capacity);
-                    capacity=0;
-                    break;
-                }
+        //         }else{
+        //             //include fractional item
+        //             finalVal += (ratio[i][1]* capacity);
+        //             capacity=0;
+        //             break;
+        //         }
 
-            }
-            System.out.println("final value :"+finalVal);
+        //     }
+        //     System.out.println("final value :"+finalVal);
+
+
+
+        //3.Minimum absolute Difference
+        int A[]={1,4,7,8};
+        int B[]={2,3,6,5};
+
+        Arrays.sort(A);
+        Arrays.sort(B);
+        int Mindiff=0;
+
+        for(int i=0;i<A.length;i++){
+            Mindiff +=Math.abs(A[i]-B[i]);
+        }
+        System.out.println("Minimum absolute difference = "+Mindiff);
     }
 }
