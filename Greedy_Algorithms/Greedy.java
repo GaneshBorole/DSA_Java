@@ -81,16 +81,35 @@ public class Greedy {
 
 
         //3.Minimum absolute Difference
-        int A[]={1,4,7,8};
-        int B[]={2,3,6,5};
+        // int A[]={1,4,7,8};
+        // int B[]={2,3,6,5};
 
-        Arrays.sort(A);
-        Arrays.sort(B);
-        int Mindiff=0;
+        // Arrays.sort(A);
+        // Arrays.sort(B);
+        // int Mindiff=0;
 
-        for(int i=0;i<A.length;i++){
-            Mindiff +=Math.abs(A[i]-B[i]);
+        // for(int i=0;i<A.length;i++){
+        //     Mindiff +=Math.abs(A[i]-B[i]);
+        // }
+        // System.out.println("Minimum absolute difference = "+Mindiff);
+
+
+
+
+        //4.Maximum length chain of pairs
+        int pairs[][]={{5,24},{39,60},{5,28},{27,40},{50,90}};
+        Arrays.sort(pairs,Comparator.comparingDouble(o ->o[1]));
+
+        int ChainLeng=1;
+        int lastEnd=pairs[0][1];
+
+        for(int i=0;i<pairs.length;i++){
+            if(pairs[i][0]>lastEnd){
+                ChainLeng++;
+                lastEnd=pairs[i][1];
+            }
         }
-        System.out.println("Minimum absolute difference = "+Mindiff);
+        System.out.println("Maximum length of chain = "+ChainLeng);
+
     }
 }
