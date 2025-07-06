@@ -97,19 +97,46 @@ public class Greedy {
 
 
         //4.Maximum length chain of pairs
-        int pairs[][]={{5,24},{39,60},{5,28},{27,40},{50,90}};
-        Arrays.sort(pairs,Comparator.comparingDouble(o ->o[1]));
+        // int pairs[][]={{5,24},{39,60},{5,28},{27,40},{50,90}};
+        // Arrays.sort(pairs,Comparator.comparingDouble(o ->o[1]));
 
-        int ChainLeng=1;
-        int lastEnd=pairs[0][1];
+        // int ChainLeng=1;
+        // int lastEnd=pairs[0][1];
 
-        for(int i=0;i<pairs.length;i++){
-            if(pairs[i][0]>lastEnd){
-                ChainLeng++;
-                lastEnd=pairs[i][1];
+        // for(int i=0;i<pairs.length;i++){
+        //     if(pairs[i][0]>lastEnd){
+        //         ChainLeng++;
+        //         lastEnd=pairs[i][1];
+        //     }
+        // }
+        // System.out.println("Maximum length of chain = "+ChainLeng);
+
+
+        //Indian Coins
+        Integer coins[]={1,2,5,10,20,50,100,500,2000};
+        Arrays.sort(coins,Comparator.reverseOrder());
+
+        int countofCoins=0;
+        //int amount=590;
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter the amount = ");
+        int amount=sc.nextInt();
+        ArrayList<Integer> ans=new ArrayList<>();
+
+        for(int i=0;i<coins.length;i++){
+            if (coins[i] <= amount) {
+                while (coins[i]<= amount) {
+                    countofCoins++;
+                    ans.add(coins[i]);
+                    amount=amount-coins[i];
+                    
+                }  
             }
         }
-        System.out.println("Maximum length of chain = "+ChainLeng);
-
+        System.out.println("Total (min) coins used = "+countofCoins);
+        for(int i=0;i<ans.size();i++){
+            System.out.print(ans.get(i)+" ");
+        }
+        System.out.println();
     }
 }
