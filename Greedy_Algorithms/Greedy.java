@@ -1,6 +1,18 @@
 import java.util.*;
 
 public class Greedy {
+     static class Job {
+        int deadline;
+        int profit;
+        int id; 
+
+        public Job(int i, int d, int p) {
+            deadline = d;
+            id = i;
+            profit = p;
+        }
+    }
+
     public static void main(String[] args) {
          //1. Activity selection problem //O(n)
 
@@ -112,31 +124,61 @@ public class Greedy {
         // System.out.println("Maximum length of chain = "+ChainLeng);
 
 
-        //Indian Coins
-        Integer coins[]={1,2,5,10,20,50,100,500,2000};
-        Arrays.sort(coins,Comparator.reverseOrder());
+        //5.Indian Coins
 
-        int countofCoins=0;
-        //int amount=590;
-        Scanner sc=new Scanner(System.in);
-        System.out.print("Enter the amount = ");
-        int amount=sc.nextInt();
-        ArrayList<Integer> ans=new ArrayList<>();
+        // Integer coins[]={1,2,5,10,20,50,100,500,2000};
+        // Arrays.sort(coins,Comparator.reverseOrder());
 
-        for(int i=0;i<coins.length;i++){
-            if (coins[i] <= amount) {
-                while (coins[i]<= amount) {
-                    countofCoins++;
-                    ans.add(coins[i]);
-                    amount=amount-coins[i];
+        // int countofCoins=0;
+        // //int amount=590;
+        // Scanner sc=new Scanner(System.in);
+        // System.out.print("Enter the amount = ");
+        // int amount=sc.nextInt();
+        // ArrayList<Integer> ans=new ArrayList<>();
+
+        // for(int i=0;i<coins.length;i++){
+        //     if (coins[i] <= amount) {
+        //         while (coins[i]<= amount) {
+        //             countofCoins++;
+        //             ans.add(coins[i]);
+        //             amount=amount-coins[i];
                     
-                }  
+        //         }  
+        //     }
+        // }
+        // System.out.println("Total (min) coins used = "+countofCoins);
+        // for(int i=0;i<ans.size();i++){
+        //     System.out.print(ans.get(i)+" ");
+        // }
+        // System.out.println();
+
+
+        //6.Job sequencing Problem
+
+        int jobsInfo[][] = { {4, 20}, {1, 10}, {1, 40}, {1, 30} };
+        ArrayList<Job> jobs = new ArrayList<>();
+        
+        for (int i = 0; i < jobsInfo.length; i++) {
+            jobs.add(new Job(i, jobsInfo[i][0], jobsInfo[i][1]));
+        }
+
+        // Sort jobs by descending profit
+        Collections.sort(jobs, (a, b) -> b.profit - a.profit);
+
+        ArrayList<Integer> seq = new ArrayList<>();
+        int time = 0;
+        for (int i = 0; i < jobs.size(); i++) {
+            Job curr = jobs.get(i);
+            if (curr.deadline > time) {
+                seq.add(curr.id);
+                time++;
             }
         }
-        System.out.println("Total (min) coins used = "+countofCoins);
-        for(int i=0;i<ans.size();i++){
-            System.out.print(ans.get(i)+" ");
-        }
-        System.out.println();
+
+        System.out.println("Maximum jobs done: " + seq.size());
+       for(int i=0;i<seq.size();i++){
+        System.out.print(seq.get(i)+" ");
+       }
+       System.out.println();
     }
 }
