@@ -193,9 +193,9 @@ public class Greedy {
     int hp=1;int vp=1;
     int cost=0;
 
-    while (h<costHor.length &&  v < costVer.length) {
+    while (h < costHor.length &&  v < costVer.length) {
         if(costVer[v] <= costHor[h]){ //horizontal cut
-            cost +=(costHor[h]*vp);
+            cost += (costHor[h]*vp);
             hp++;
             h++;
 
@@ -203,10 +203,9 @@ public class Greedy {
             cost +=(costVer[v]*hp);
             vp++;
             v++;
-        }
-        
+        }  
     }
-    while (h< costHor.length) {
+    while (h < costHor.length) {
         cost +=(costHor[h]*vp);
         hp++;
         h++;
@@ -218,6 +217,6 @@ public class Greedy {
             v++;
         
     }
-    System.out.println(cost);
+    System.out.println("Minimum cost price of cuts is = "+cost);
     }
 }
