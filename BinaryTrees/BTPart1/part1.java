@@ -37,13 +37,34 @@ public class part1 {
             preorder(root.left);
             preorder(root.right);
         }
+    
+    //inorder traversal 
+    public static void Inorder(Node root){
+        if(root == null){
+            return;
+        }
+        Inorder(root.left);
+        System.out.print((root.data)+" ");
+        Inorder(root.right);
+    }
+//post order traversal
+public static void postorder(Node root){
+    if(root == null){
+        return;
+    }
+    postorder(root.left);
+    postorder(root.right);
+    System.out.print(root.data+" ");
+}
     }
    public static void main(String[] args) {
     int node[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
     BinaryTree tree = new BinaryTree();
     Node root = tree.buildtree(node);
     // System.out.println(root.data);
-    tree.preorder(root);
+    //tree.preorder(root);
+    // tree.Inorder(root);
+    tree.postorder(root);
 }
 
     
