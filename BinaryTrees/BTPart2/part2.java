@@ -54,39 +54,132 @@ public class part2 {
     }
 
     //Diameter of tree  //Approach 2 O(n)
-   static class Info {
-    int diam;
-    int ht;
+//    static class Info {
+//     int diam;
+//     int ht;
     
-    public Info(int diam, int ht){
-        this.diam = diam;
-        this.ht = ht;
+//     public Info(int diam, int ht){
+//         this.diam = diam;
+//         this.ht = ht;
+//     }
+//      public String toString() {
+//         return "Diameter = " + diam + ", Height = " + ht;
+//      }
+// }
+
+// public static Info diameter2(Node root) {
+//     if (root == null) {
+//         return new Info(0, 0);
+//     }
+
+//     Info leInfo = diameter2(root.left);
+//     Info rightInfo = diameter2(root.right);
+
+//     int ht = Math.max(leInfo.ht, rightInfo.ht) + 1;
+//     int selfDiam = leInfo.ht + rightInfo.ht + 1;
+//     int diam = Math.max(Math.max(leInfo.diam, rightInfo.diam), selfDiam);
+
+//     return new Info(diam, ht);
+// }
+
+
+//3 .Subtree of Another Tree
+
+
+public static boolean isIdentical(Node node,Node subroot){
+    if(node == null && subroot==null){
+        return true;
+    }else if(node == null|| subroot== null || node.data != subroot.data){
+        return false;
     }
-     public String toString() {
-        return "Diameter = " + diam + ", Height = " + ht;
-     }
+    if(!isIdentical(node.left, subroot.left)){
+        return false;
+    }
+    if(!isIdentical(node.right, subroot.right)){
+        return false;
+    }
+    return true;
+
+}
+public static boolean subtree(Node root,Node subroot){
+    if(root == null){
+        return false;
+    }
+    if(root.data== subroot.data){
+        if (isIdentical(root,subroot)){
+            return true;
+
+        }
+    }
+   return subtree(root.left, subroot) || subtree(root.right, subroot);
+
+
 }
 
-public static Info diameter2(Node root) {
-    if (root == null) {
-        return new Info(0, 0);
-    }
 
-    Info leInfo = diameter2(root.left);
-    Info rightInfo = diameter2(root.right);
+//Top View of a tree
 
-    int ht = Math.max(leInfo.ht, rightInfo.ht) + 1;
-    int selfDiam = leInfo.ht + rightInfo.ht + 1;
-    int diam = Math.max(Math.max(leInfo.diam, rightInfo.diam), selfDiam);
 
-    return new Info(diam, ht);
+static class Info {
+    Node node;
+    int hd;
+
+    public Info(Node node,int hd){
+        this.node=node;
+        this.hd=hd;
+    }  
 }
 
+public static void TopView(Node root){
+    //level order traversal
+    Queue<Info> q =new LinkedList<>();
+    HashMap<Integer,Node> map=new HashMap<>();
+    int min=0,max=0;
+    q.add(new Info(root,0));
+    q.add(null);
+
+    while (!q.isEmpty()) {
+       Info curr = q.remove();
+    if (curr == null) {
+    if (q.isEmpty()) {
+        break;
+    } else {
+        q.add(null);
+        continue; 
+    }
+        }
+        if (!map.containsKey(curr.hd)) {
+            map.put(curr.hd, curr.node);
+            
+        }
+        if (curr.node.left != null) {
+            q.add(new Info(curr.node.left,curr.hd-1));
+            min=Math.min(min,curr.hd-1);
+            
+        }
+         if (curr.node.right != null) {
+            q.add(new Info(curr.node.right,curr.hd+1));
+            max=Math.max(max,curr.hd+1);
+         }
+    }
+    for (int i = min; i <=max; i++) {
+    System.out.print(map.get(i).data+" ");    
+    }
+    System.out.println();
+
+}
     public static void main(String[] args) {
     int node[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
     BinaryTree tree = new BinaryTree();
     Node root = tree.buildtree(node);
-    System.out.println("diameter of a tree is : "+diameter2(root).diam);
+    //System.out.println("diameter of a tree is : "+diameter2(root).diam);
+
+    // Node subroot=new Node(2);
+    // subroot.left=new Node(4);
+    // subroot.right=new Node(5);
+    // System.out.println(subtree(root, subroot));
+    
+    TopView(root);
 
         
     }
