@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import java.util.ArrayList;
+
 public class BST1 {
     static class Node {
         int data;
@@ -92,6 +94,28 @@ public class BST1 {
         }
         return root;
     }
+
+  
+
+    //Root To Leaf Node path
+    public static void printpath(ArrayList<Integer> path){
+        for(int i=0;i<path.size();i++){
+            System.out.print(path.get(i)+" ->");
+        }
+        System.out.println("Null");
+    }
+    public static void Root2Leaf(Node root,ArrayList<Integer> path){
+        if (root== null) {
+            return;
+        }
+        path.add(root.data);
+        if (root.left== null && root.right== null) {
+            printpath(path);  
+        }
+        Root2Leaf(root.left,path);
+        Root2Leaf(root.right, path);
+        path.remove(path.size()-1);
+    }
     public static void main(String[] args) {
         //  int val[]={5,1,3,4,2,7};
         int val[]={8,5,3,1,4,6,10,11,14};
@@ -112,9 +136,12 @@ public class BST1 {
         //     System.out.println("key not found");
         // }
 
-        root=delete(root, 11);
-        System.out.println();
-        inorder(root);
+        // root=delete(root, 11);
+        // System.out.println();
+        // inorder(root);
+
+        //PrintInRange(root,5,12);
+        Root2Leaf(root, new ArrayList<>());
     }
     
 }
