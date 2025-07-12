@@ -95,7 +95,25 @@ public class BST1 {
         return root;
     }
 
-  
+  //Print in Range 
+    public static void PrintInRange(Node root,int k1,int k2){
+        if (root== null) {
+            return;
+            
+        }
+         if (root.data>= k1 && root.data <= k2) {
+            PrintInRange(root.left,k1,k2);
+            System.out.print(root.data+" ");
+            PrintInRange(root.right,k1,k2);  
+         }
+         else if (root.data < k1) {
+          PrintInRange(root.left,k1,k2);
+            
+         }
+         else{
+            PrintInRange(root.right,k1,k2);
+         }
+    }
 
     //Root To Leaf Node path
     public static void printpath(ArrayList<Integer> path){
