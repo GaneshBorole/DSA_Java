@@ -1,5 +1,6 @@
 package BinarySearchTree;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 
 public class BST1 {
@@ -136,6 +137,7 @@ public class BST1 {
     }
     
     // check either validate Bst or Not
+
     public static boolean isValid(Node root,Node min,Node max){
         if (root==null) {
             return true;
@@ -151,6 +153,30 @@ public class BST1 {
         return isValid(root.left, min, root) && isValid(root.right, root, max);
 
     }
+
+    //Mirror image of a BST
+public static Node createMirror(Node root){
+    if (root== null) {
+        return null;
+        
+    }
+Node leftMirror=createMirror(root.left);
+Node rightMirror=createMirror(root.right);
+root.left=rightMirror;
+root.right=leftMirror;
+return root;
+
+}
+public static void preorder(Node root){
+    if (root == null) {
+        return;
+        
+    }
+    System.out.println(root.data+" ");
+    preorder(root.left);
+    preorder(root.right);
+}
+
     public static void main(String[] args) {
         //  int val[]={5,1,3,4,2,7};
         int val[]={8,5,3,1,4,6,10,11,14};
@@ -178,12 +204,14 @@ public class BST1 {
         //PrintInRange(root,5,12);
        // Root2Leaf(root, new ArrayList<>());
 
-       if (isValid(root, null,null)) {
-        System.out.println("valid BST");
+    //    if (isValid(root, null,null)) {
+    //     System.out.println("valid BST");
         
-       }else{
-        System.out.println("not valid BST");
-       }
+    //    }else{
+    //     System.out.println("not valid BST");
+    //    }
+
+    createMirror(root);
     }
     
 }
