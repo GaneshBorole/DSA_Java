@@ -38,7 +38,7 @@ public class BST2 {
 
 
     //2. convert Unbalanced Bst to  balanced BST
-   public static void getinorder(Node root, AbstractList<Integer> inorder) {
+   public static void getinorder(Node root, ArrayList<Integer> inorder) {
     if (root == null) {
         return;  
     }
