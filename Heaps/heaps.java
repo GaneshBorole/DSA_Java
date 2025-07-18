@@ -1,12 +1,8 @@
 package Heaps;
-
 import java.util.*;
 
-import Heaps.heaps.Heap;
-import Heaps.heaps.Student;
-
 public class heaps {
-    static class Student implements Comparable<Student> { //method Overrides    
+    static class Student implements Comparable<Student> { //method Overrides  properties of Comparable  
         String name;
         int rank;
 
@@ -25,7 +21,7 @@ public class heaps {
     static class Heap {
         ArrayList<Integer> arr=new ArrayList<>();
         public void add(int data){
-            //add at last idx
+            //add at last idx of array
             arr.add(data);
             int x=arr.size()-1; //x is child
             int par=(x-1)/2; //par idx
