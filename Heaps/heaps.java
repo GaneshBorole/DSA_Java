@@ -1,6 +1,10 @@
 package Heaps;
 import java.util.*;
 
+import Heaps.heaps.Student;
+
+
+
 public class heaps {
     static class Student implements Comparable<Student> { //method Overrides  properties of Comparable  
         String name;
@@ -41,44 +45,93 @@ public class heaps {
         }
 
         // Delete Node in Heap using heapify
-        private void heapify(int i){
-            int left=2*i+1;
-            int right=2*i+2;
-            int minIdx=i;
-        if (left < arr.size() && arr.get(minIdx)> arr.get(left)) {
-            minIdx=left;  
-        }
-         if (right < arr.size() && arr.get(minIdx)> arr.get(right)) {
-            minIdx=right;   
-        }
-        if (minIdx !=i) {
-            int tenp=arr.get(i);
-            arr.set(i, arr.get(minIdx));
-            arr.set(minIdx, tenp);
-            heapify(minIdx);
+        // private void heapify(int i){
+        //     int left=2*i+1;
+        //     int right=2*i+2;
+        //     int minIdx=i;
+        // if (left < arr.size() && arr.get(minIdx)> arr.get(left)) {
+        //     minIdx=left;  
+        // }
+        //  if (right < arr.size() && arr.get(minIdx)> arr.get(right)) {
+        //     minIdx=right;   
+        // }
+        // if (minIdx !=i) {
+        //     int tenp=arr.get(i);
+        //     arr.set(i, arr.get(minIdx));
+        //     arr.set(minIdx, tenp);
+        //     heapify(minIdx);
             
-        }
+        // }
 
-        }
-        public int remove(){
-            int data=arr.get(0);
-            //swap 1st and last
-            int temp=arr.get(0);
-            arr.set(0, arr.get(arr.size()-1));
-            arr.set(arr.size()-1, temp);
+     //   }
+        // public int remove(){
+        //     int data=arr.get(0);
+        //     //swap 1st and last
+        //     int temp=arr.get(0);
+        //     arr.set(0, arr.get(arr.size()-1));
+        //     arr.set(arr.size()-1, temp);
 
-            //delete last
-            arr.remove(arr.size()-1);
+        //     //delete last
+        //     arr.remove(arr.size()-1);
 
-            //heapify
-            heapify(0);
-            return data;
-        }
-        public boolean isEmpty(){
-            return arr.size()==0;
-        }
+        //     //heapify
+        //     heapify(0);
+        //     return data;
+        // }
+        // public boolean isEmpty(){
+        //     return arr.size()==0;
+        // }
  
     }
+
+
+    public static void heapify(int[] arr, int i, int size) {
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        int maxIdx = i;
+
+        if (left < size && arr[left] > arr[maxIdx]) {
+            maxIdx = left;
+        }
+        if (right < size && arr[right] > arr[maxIdx]) {
+            maxIdx = right;
+        }
+
+        if (maxIdx != i) {
+            // Swap
+            int temp = arr[i];
+            arr[i] = arr[maxIdx];
+            arr[maxIdx] = temp;
+
+            // Heapify the affected subtree
+            heapify(arr, maxIdx, size);
+        }
+    }
+
+    // Heap Sort function
+    
+    public static void heapSort(int[] arr) {
+        int n = arr.length;
+
+        // Step 1: Build Max Heap
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, i, n);
+        }
+
+        // Step 2: Extract elements from heap
+        for (int i = n - 1; i > 0; i--) {
+            // Swap current root with end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // Call max heapify on the reduced heap
+            heapify(arr, 0, i);
+        }
+    }
+
+
+    
 
     public static void main(String[] args) {
         // PriorityQueue<Student> pq = new PriorityQueue<>(Comparator.reverseOrder());
@@ -96,16 +149,34 @@ public class heaps {
         // }
 
 
-        Heap h= new Heap();
-        h.add(3);
-        h.add(4);
-        h.add(1);
-        h.add(5);
+        // Heap h= new Heap();
+        // h.add(3);
+        // h.add(4);
+        // h.add(1);
+        // h.add(5);
 
-        while (!h.isEmpty()) {
-            System.out.println(h.peek());
-            h.remove();
+        // while (!h.isEmpty()) {
+        //     System.out.println(h.peek());
+        //     h.remove();
             
+        // }
+
+        int[] arr = {20, 5, 15, 22, 9, 3, 7};
+
+        System.out.println("Before sorting:");
+        for (int num : arr) {
+            System.out.print(num + " ");
         }
+
+        heapSort(arr);
+
+        System.out.println("\nAfter sorting:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    
     }
 }
+
+    
+
