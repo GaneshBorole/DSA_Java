@@ -109,7 +109,7 @@ public class heaps {
     }
 
     // Heap Sort function
-    
+
     public static void heapSort(int[] arr) {
         int n = arr.length;
 
@@ -131,7 +131,25 @@ public class heaps {
     }
 
 
-    
+    //nearest distance of k points from origin
+    static class point implements Comparable<point>{
+        int x;
+        int y;
+        int distseq;
+        int idx;
+
+        public point(int x,int y,int distseq,int idx){
+            this.x=x;
+            this.y=y;
+            this.distseq=distseq;
+            this.idx=idx;
+        }
+        @Override
+        public int compareTo(point p2){
+            return this.distseq-p2.distseq;
+        }
+
+    }
 
     public static void main(String[] args) {
         // PriorityQueue<Student> pq = new PriorityQueue<>(Comparator.reverseOrder());
@@ -174,6 +192,37 @@ public class heaps {
         for (int num : arr) {
             System.out.print(num + " ");
         }
+
+
+        // k nearest distance of cars
+        int pts[][]={{3,3},{5,-1},{-2,4}};
+        int k=2;
+        PriorityQueue<point> pq=new PriorityQueue<>();
+        for (int i = 0; i< pts.length; i++) {
+            int distseq=pts[i][0]*pts[i][0] + pts[i][1]*pts[i][1];
+           pq.add(new point(pts[i][0],pts[i][1],distseq,i))  ;         
+        }
+        for(int i=0;i<k;i++){
+            System.out.println("C"+pq.remove().idx);
+        }
+
+
+        // cost of connecting n ropes
+        int ropes[]={2,3,3,4,6};
+        PriorityQueue<Integer> pq1=new PriorityQueue<>();
+        for(int i=0;i<ropes.length;i++){
+            pq1.add(ropes[i]);
+        }
+        int cost=0;
+        while (pq1.size()>1) {
+            int min=pq1.remove();
+            int min2=pq1.remove();
+            cost += min+ min2;
+            pq1.add(min+min2);
+            
+        }
+        System.out.println("cost of connecting n ropes"+cost);
+
     
     }
 }
