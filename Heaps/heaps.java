@@ -151,6 +151,8 @@ public class heaps {
 
     }
 
+
+
     public static void main(String[] args) {
         // PriorityQueue<Student> pq = new PriorityQueue<>(Comparator.reverseOrder());
 
@@ -178,6 +180,7 @@ public class heaps {
         //     h.remove();
             
         // }
+
 
         int[] arr = {20, 5, 15, 22, 9, 3, 7};
 
