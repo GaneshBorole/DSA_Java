@@ -8,6 +8,7 @@ public class Hashing {
         hm.put("India",125);
         hm.put("china", 150);
         hm.put("us", 50);
+        hm.put("Nepal", 5);
         System.out.println(hm);
        
         //Get O(1)
@@ -20,10 +21,20 @@ public class Hashing {
         System.out.println(hm.containsKey("australia"));
 
         //remove O(1)
-        System.out.println(hm.remove("India"));
-        System.out.println(hm);
+      //  System.out.println(hm.remove("India"));
+        //System.out.println(hm);
 
         //size
         System.out.println(hm.size());
+
+        //Iteration on Hashmap
+        Set<String> keys=hm.keySet();
+        System.out.println(keys);
+
+        for (String k : keys) {
+            System.out.println("key = "+k+" , value = "+hm.get(k));
+            
+        }
+
     }
 }
