@@ -2,100 +2,137 @@ package Hashing;
 import java.util.*;
 
 public class hashmapImplement {
-    static class Hashmap<K,V> {
+    static class HashMap<K, V> {
         private class Node {
             K key;
             V value;
-        
-            public Node(K key,V value){
-                this.key=key;
-                this.value=value;
+
+            public Node(K key, V value) {
+                this.key = key;
+                this.value = value;
             }
         }
-    }
-        private int n;
-        private int N;
-        private LinkedList<Node>bucket[];
+
+        private int n; // total nodes
+        private int N; // total buckets
+        private LinkedList<Node>[] buckets;
 
         @SuppressWarnings("unchecked")
-        public HashMap(){
-            this.N=4;
-            this.bucket=new LinkedList[4];
-            for (int i = 0; i <4; i++) {
-                this.bucket[i]=new LinkedList<>();
-                
+        public HashMap() { 
+            this.N = 4;
+            this.buckets = new LinkedList[N];
+            for (int i = 0; i < N; i++) {
+                this.buckets[i] = new LinkedList<>();
             }
         }
-        private int hashFunction(k key){
-            int hc=key.hashcode();
-            return Math.abs(hc)% N;
-        }
-        private int SearchLL(K key,int bi){
-            LinkedList<Node> ll=bucket[bi];
-            int di=0;
 
-            for (int i = 0; i < ll.size(); i++) {
-                Node node=ll.get(i);
-                if (node.key== key) {
+        private int hashFunction(K key) {
+            int hc = key.hashCode();
+            return Math.abs(hc) % N;
+        }
+
+        private int searchLL(K key, int bi) {
+            LinkedList<Node> ll = buckets[bi];
+            for (int di = 0; di < ll.size(); di++) {
+                if (ll.get(di).key.equals(key)) {
                     return di;
-                    
                 }
-                di++; 
-                
             }
             return -1;
-
         }
-        private void rehash(){
-            LinkedList<Node> oldBuck[]=bucket;
-            bucket=new LinkedList[N*2];
-            N=2*N;
-            for(int i=0;i<bucket.length;i++){
-                bucket[i]=new LinkedList<>();
+
+        @SuppressWarnings("unchecked")
+        // rehash()
+        private void rehash() {
+            LinkedList<Node>[] oldBuckets = buckets;
+            N = N * 2;
+            buckets = new LinkedList[N];
+            for (int i = 0; i < N; i++) {
+                buckets[i] = new LinkedList<>();
             }
 
-            //nodes -> add in new bucket
-            for(int i=0;i<oldBuck.length;i++){
-                LinkedList<Node> ll=oldBuck[i];
-                for(int j=0;j<ll.size();j++){
-                    Node node=ll.remove();
+            n = 0;
+            for (LinkedList<Node> ll : oldBuckets) {
+                for (Node node : ll) {
                     put(node.key, node.value);
                 }
             }
-
         }
 
-        public void put(K key,V value){
-            int bi=hashfunction(key);//bi= bucket index
-            int di=SearchLL(key,bi);//di=data index
+        // put element code
+        public void put(K key, V value) {
+            int bi = hashFunction(key); //bi =bucket index
+            int di = searchLL(key, bi); //di=data index
 
             if (di != -1) {
-                Node node=bucket[bi].get[di];
-                node.value=value;
-                
-            }else{
-                bucket[bi].add(new Node(key,value));
+                buckets[bi].get(di).value = value;
+            } else {
+                buckets[bi].add(new Node(key, value));
                 n++;
             }
-            double lambda=(double)n/N;
+
+            double lambda = (double) n / N;
             if (lambda > 2.0) {
                 rehash();
-                
             }
+        }
+    
+        // remove element code
+        public V remove(K key) {
+            int bi = hashFunction(key);
+            int di = searchLL(key, bi);
 
+            if (di != -1) {
+                Node node = buckets[bi].remove(di);
+                n--;
+                return node.value;
+            }
+            return null;
         }
 
-        
-       public static void main(String[] args) {
-        HashMap<String,Integer> hm= new HashMap<>();
-        hm.put("India",125);
-        hm.put("china", 150);
-        hm.put("us", 50);
-        hm.put("Nepal", 5);
-        
-       }
-        
+        public boolean containsKey(K key) {
+            int bi = hashFunction(key);
+            int di = searchLL(key, bi);
+            return di != -1;
+        }
+
+
+        // Get element code
+        public V get(K key) {
+            int bi = hashFunction(key);
+            int di = searchLL(key, bi);
+
+            if (di != -1) {
+                return buckets[bi].get(di).value;
+            }
+            return null;
+        }
+
+        public ArrayList<K> keySet() {
+            ArrayList<K> keys = new ArrayList<>();
+            for (LinkedList<Node> ll : buckets) {
+                for (Node node : ll) {
+                    keys.add(node.key);
+                }
+            }
+            return keys;
+        }
+
+        public boolean isEmpty() {
+            return n == 0;
+        }
     }
 
-    
+    public static void main(String[] args) {
+        HashMap<String, Integer> hm = new HashMap<>();
+        hm.put("India", 125);
+        hm.put("China", 150);
+        hm.put("US", 50);
+        hm.put("Nepal", 5);
 
+        ArrayList<String> keys = hm.keySet();
+        for (String key : keys) {
+            System.out.println(key + " -> " + hm.get(key));
+        }
+    }
+}
