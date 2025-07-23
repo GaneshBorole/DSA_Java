@@ -134,5 +134,12 @@ public class hashmapImplement {
         for (String key : keys) {
             System.out.println(key + " -> " + hm.get(key));
         }
+
+        LinkedHashMap<String,Integer> lhm=new LinkedHashMap<>(); // keys are inserted in ordered
+        lhm.put("india", 100);
+        lhm.put("china", 150);
+        lhm.put("Us", 50);
+
+        System.out.println(lhm);
     }
 }
