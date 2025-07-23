@@ -124,28 +124,54 @@ public class hashmapImplement {
     }
 
     public static void main(String[] args) {
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("India", 125);
-        hm.put("China", 150);
-        hm.put("US", 50);
-        hm.put("Nepal", 5);
+        // HashMap<String, Integer> hm = new HashMap<>();
+        // hm.put("India", 125);
+        // hm.put("China", 150);
+        // hm.put("US", 50);
+        // hm.put("Nepal", 5);
 
-        ArrayList<String> keys = hm.keySet();
-        for (String key : keys) {
-            System.out.println(key + " -> " + hm.get(key));
+        // ArrayList<String> keys = hm.keySet();
+        // for (String key : keys) {
+        //     System.out.println(key + " -> " + hm.get(key));
+        // }
+
+
+        // LinkedHashMap<String,Integer> lhm=new LinkedHashMap<>(); // keys are inserted in ordered
+        // lhm.put("india", 100);
+        // lhm.put("china", 150);
+        // lhm.put("Us", 50);
+
+        // System.out.println(lhm);
+
+
+
+        // TreeMap<String,Integer> tm = new TreeMap<>(); // keys are sorted in ordered
+        // tm.put("us", 80);
+        // tm.put("eng", 40);
+        // tm.put("india", 100);
+        // System.out.println(tm);
+
+
+        
+        //1. find elements that appear more than(n/3) times
+        int arr[]={1,3,2,5,1,3,1,5,1};
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (map.containsKey(arr[i])) {
+               map.put(arr[i], map.get(arr[i]) + 1); 
+                
+            }else{
+                map.put(arr[i], 1);
+            }
+        }
+        
+        for (Integer key : map.keySet()) {
+            if (map.get(key) > arr.length/3) {
+                System.out.println(key);
+                
+            }
         }
 
-        LinkedHashMap<String,Integer> lhm=new LinkedHashMap<>(); // keys are inserted in ordered
-        lhm.put("india", 100);
-        lhm.put("china", 150);
-        lhm.put("Us", 50);
 
-        System.out.println(lhm);
-
-        TreeMap<String,Integer> tm = new TreeMap<>(); // keys are sorted in ordered
-        tm.put("us", 80);
-        tm.put("eng", 40);
-        tm.put("india", 100);
-        System.out.println(tm);
     }
 }
