@@ -141,5 +141,11 @@ public class hashmapImplement {
         lhm.put("Us", 50);
 
         System.out.println(lhm);
+
+        TreeMap<String,Integer> tm = new TreeMap<>(); // keys are sorted in ordered
+        tm.put("us", 80);
+        tm.put("eng", 40);
+        tm.put("india", 100);
+        System.out.println(tm);
     }
 }
