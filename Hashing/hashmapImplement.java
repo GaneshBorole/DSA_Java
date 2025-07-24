@@ -123,6 +123,43 @@ public class hashmapImplement {
         }
     }
 
+
+     // 2.check if Two strings are Anagram or Not
+   public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        // Count frequency of characters in s
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (map.containsKey(ch)) {
+                map.put(ch, map.get(ch) + 1);
+            } else {
+                map.put(ch, 1);
+            }
+        }
+
+        // Decrease count based on characters in t
+        for (int i = 0; i < t.length(); i++) {
+            char ch = t.charAt(i);
+            if (map.containsKey(ch)) {
+                if (map.get(ch) == 1) {
+                    map.remove(ch);
+                } else {
+                    map.put(ch, map.get(ch) - 1);
+                }
+            } else {
+                return false;
+            }
+        }
+
+        return map.isEmpty();
+    }
+
+
     public static void main(String[] args) {
         // HashMap<String, Integer> hm = new HashMap<>();
         // hm.put("India", 125);
@@ -152,6 +189,10 @@ public class hashmapImplement {
         // System.out.println(tm);
 
 
+        String s="race";
+        String t= "care";
+
+        System.out.println(isAnagram(s, t));
         
         //1. find elements that appear more than(n/3) times
         int arr[]={1,3,2,5,1,3,1,5,1};
@@ -171,7 +212,8 @@ public class hashmapImplement {
                 
             }
         }
-
+     
+       
 
     }
 }
