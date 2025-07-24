@@ -240,6 +240,14 @@ public class hashmapImplement {
     trs.add("Bengluru");
     System.out.println(trs);
     
+    // count Distinct element in array
+            int nums[]={4,3,2,5,6,7,3,4,2,1};
+            HashSet<Integer> sets=new HashSet<>();
+            for (int i = 0; i < nums.length; i++) {
+                sets.add(nums[i]);
+                
+            }
+            System.out.println("ans = "+sets.size());
 
 
         //1. find elements that appear more than(n/3) times
