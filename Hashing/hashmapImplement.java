@@ -160,6 +160,7 @@ public class hashmapImplement {
     }
 
 
+
     public static void main(String[] args) {
         // HashMap<String, Integer> hm = new HashMap<>();
         // hm.put("India", 125);
@@ -191,9 +192,40 @@ public class hashmapImplement {
 
         String s="race";
         String t= "care";
-
         System.out.println(isAnagram(s, t));
+
+
+
+    // Hashset concept
+    HashSet<Integer> set=new HashSet<>();
+    set.add(1);
+    set.add(2);
+    set.add(4);
+    set.add(2);
+    System.out.println(set);
+    System.out.println(set.size());
+    //set.remove(2);
+    if (set.contains(2)) {
+        System.out.println("set contains 2");
         
+    }
+
+    //iteration on hashset
+    HashSet<String> cities=new HashSet<>();
+    cities.add("Mumbai");
+    cities.add("pune");
+    cities.add("Delhi");
+    Iterator itr=cities.iterator();
+    while (itr.hasNext()) {
+        System.out.println(itr.next());
+        
+    }
+    for (String city : cities) {
+        System.out.println(city);
+        
+    }
+
+
         //1. find elements that appear more than(n/3) times
         int arr[]={1,3,2,5,1,3,1,5,1};
         HashMap<Integer,Integer> map = new HashMap<>();
