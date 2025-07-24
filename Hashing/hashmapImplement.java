@@ -226,6 +226,22 @@ public class hashmapImplement {
     }
 
 
+    //LinkedHashset
+    LinkedHashSet<String> lhm=new LinkedHashSet<>();
+    lhm.add("Mumbai");
+    lhm.add("pune");
+    lhm.add("Delhi");
+    System.out.println(lhm);
+
+    //treeset
+    TreeSet<String> trs=new TreeSet<>();
+    trs.add("mumbai");
+    trs.add("pune");
+    trs.add("Bengluru");
+    System.out.println(trs);
+    
+
+
         //1. find elements that appear more than(n/3) times
         int arr[]={1,3,2,5,1,3,1,5,1};
         HashMap<Integer,Integer> map = new HashMap<>();
