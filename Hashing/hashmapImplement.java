@@ -328,8 +328,29 @@ public static String getStart(HashMap<String,String> tickets){
                 
             }
         }
-     
-       
+
+
+        //4. find out largest subArray with 0  sum
+       int array[] = {15, -2, 2, -8, 1, 7, 10, 23};
+        HashMap<Integer, Integer> maps = new HashMap<>();
+        int sum = 0;
+        int maxLen = 0;
+
+        for (int j = 0; j < array.length; j++) {
+            sum += array[j];
+
+            if (sum == 0) {
+                maxLen = j + 1; // subarray from 0 to j
+            }
+
+            if (maps.containsKey(sum)) {
+                maxLen = Math.max(maxLen, j - maps.get(sum));
+            } else {
+                maps.put(sum, j);
+            }
+        }
+
+        System.out.println("Length of the largest subarray with sum 0: " + maxLen);
 
     }
 }
