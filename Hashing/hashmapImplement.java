@@ -159,8 +159,21 @@ public class hashmapImplement {
         return map.isEmpty();
     }
 
+    
 
+public static String getStart(HashMap<String,String> tickets){
+    HashMap<String,String> revmap= new HashMap<>();
+    for(String key: tickets.keySet()){
+        revmap.put(tickets.get(key), key);
+    }
+    for(String key: tickets.keySet()){
+        if (!revmap.containsKey(key)) {
+            return key;
+        }
+    }
+    return null;
 
+}
     public static void main(String[] args) {
         // HashMap<String, Integer> hm = new HashMap<>();
         // hm.put("India", 125);
@@ -240,7 +253,7 @@ public class hashmapImplement {
     trs.add("Bengluru");
     System.out.println(trs);
     
-    // count Distinct element in array
+    // 1 count Distinct element in array
             int nums[]={4,3,2,5,6,7,3,4,2,1};
             HashSet<Integer> sets=new HashSet<>();
             for (int i = 0; i < nums.length; i++) {
@@ -250,8 +263,7 @@ public class hashmapImplement {
             System.out.println("ans = "+sets.size());
 
     
-    // Union & Intersection of 2 arrays
-           
+    //2 Union & Intersection of 2 arrays
                 int arr1[]={7,3,9};
                 int arr2[]={6,3,9,2,9,4};
                 HashSet<Integer> set1= new HashSet<>();
@@ -277,6 +289,26 @@ public class hashmapImplement {
                     
                 }
                 System.out.println("intersection of array ="+count);
+
+        //3.find  Itinerary from ticket
+
+        HashMap<String, String> tickets = new HashMap<>();
+        tickets.put("chennai", "Bengaluru");
+        tickets.put("mumbai", "delhi");
+        tickets.put("Goa", "chennai");
+        tickets.put("delhi", "Goa");
+
+        String start = getStart(tickets);
+        System.out.print(start);
+
+        while (tickets.containsKey(start)) {
+            String next = tickets.get(start);
+            System.out.print(" -> " + next);
+            start = next;
+        }
+
+        System.out.println();
+
 
         //1. find elements that appear more than(n/3) times
         int arr[]={1,3,2,5,1,3,1,5,1};
