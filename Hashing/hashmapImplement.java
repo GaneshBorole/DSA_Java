@@ -192,7 +192,7 @@ public class hashmapImplement {
 
         // System.out.println(lhm);
 
-        // TreeMap<String,Integer> tm = new TreeMap<>(); // keys are sorted in ordered
+        // TreeMap<String,Integer> tm = new TreeMap<>(); // keys are sorted in  ascending ordered
         // tm.put("us", 80);
         // tm.put("eng", 40);
         // tm.put("india", 100);
@@ -238,9 +238,9 @@ public class hashmapImplement {
         lhm.add("Delhi");
         System.out.println(lhm);
 
-        // treeset
+        // treeset    ....in the treeSet key is in the sorted order ascending
         TreeSet<String> trs = new TreeSet<>();
-        trs.add("mumbai");
+        trs.add("mumbai"); //sorted in alphabetical order
         trs.add("pune");
         trs.add("Bengluru");
         System.out.println(trs);
@@ -344,6 +344,7 @@ public class hashmapImplement {
 
 
         // 5.subarray sum equal to k
+        
         int arrays[] = { 10, 2, -2, -20, 10 };
         int k = -10;
         HashMap<Integer, Integer> hm = new HashMap<>();
