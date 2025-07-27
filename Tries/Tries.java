@@ -7,7 +7,7 @@ public class Tries {
         Node children[] = new Node[26]; // ✅ corrected spelling
         boolean eow = false; // eow = End of Word
 
-        Node() {
+       public Node() {
             for (int i = 0; i < children.length; i++) {
                 children[i] = null;
             }
@@ -42,15 +42,30 @@ public class Tries {
         return curr.eow; 
     }
 
+
+public static boolean Wordbreak(String key){
+    if (key.length()==0) {
+        return true;
+    }
+    for (int i = 1; i <= key.length(); i++) {
+       if(search (key.substring(0,i))&& 
+       Wordbreak(key.substring(i))){;
+        return true;
+       }
+        
+    }
+    return false;
+}
     public static void main(String[] args) {
-        String words[] = { "the", "a", "there", "any", "thee" };
-        for (int i = 0; i < words.length; i++) {
-            insert(words[i]);
+        String arr[] = { "i", "like", "sam", "samsung", "mobile","ice" };
+        for (int i = 0; i < arr.length; i++) {
+            insert(arr[i]);
 
         }
-        System.out.println(search("thee"));
-        System.out.println(search("thor"));
-
+        // System.out.println(search("thee"));
+        // System.out.println(search("thor"));
+        String key="ilikesamsung";
+        System.out.println(Wordbreak(key));
     }
 
 }
