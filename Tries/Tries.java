@@ -71,6 +71,24 @@ public static boolean Wordbreak(String key){
     }
     return false;
 }
+
+//count Unique substrings
+public static int countNodes(Node root){
+    if (root == null) {
+        return 0; 
+    }
+    int count = 0;
+
+    // Recurse through each child
+    for (int i = 0; i < 26; i++) {
+        if (root.children[i] != null) {
+            count += countNodes(root.children[i]);
+        }
+    }
+
+    return count + 1; 
+}
+
     public static void main(String[] args) {
         // String arr[] = { "i", "like", "sam", "samsung", "mobile","ice" };
         // for (int i = 0; i < arr.length; i++) {
@@ -92,6 +110,18 @@ public static boolean Wordbreak(String key){
         }
         System.out.println(startsWith(prefix2));
         System.out.println(startsWith(prefix1));
+
+       String str = "ababa";
+
+// Insert all suffixes into the trie
+for (int i = 0; i < str.length(); i++) {
+    String suffix = str.substring(i);
+    insert(suffix);
+}
+
+// Count nodes and subtract 1 to exclude root
+System.out.println(countNodes(root) - 1);
+
     }
 
 }
