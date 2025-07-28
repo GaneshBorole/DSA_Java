@@ -57,7 +57,6 @@ public class Tries {
 
 
     // word break problem
-
 public static boolean Wordbreak(String key){
     if (key.length()==0) {
         return true;
@@ -72,13 +71,13 @@ public static boolean Wordbreak(String key){
     return false;
 }
 
-//count Unique substrings
+
+//count Unique substrings in a word
 public static int countNodes(Node root){
     if (root == null) {
         return 0; 
     }
     int count = 0;
-
     // Recurse through each child
     for (int i = 0; i < 26; i++) {
         if (root.children[i] != null) {
@@ -89,6 +88,29 @@ public static int countNodes(Node root){
     return count + 1; 
 }
 
+
+
+// Longest word with all prefixes
+public static String ans=" ";
+public static void longestWord(Node root,StringBuilder temp){
+    if (root==null) {
+        return;
+    }
+    for (int i = 0; i < 26; i++) {
+        if (root.children[i]!=null && root.children[i].eow== true) {
+            char ch=(char)(i+'a');
+            temp.append(ch);
+            if (temp.length()> ans.length()) {
+                ans=temp.toString();
+                
+            }
+            longestWord(root.children[i], temp);
+            temp.deleteCharAt(temp.length()-1);
+            
+        }
+        
+    }
+}
     public static void main(String[] args) {
         // String arr[] = { "i", "like", "sam", "samsung", "mobile","ice" };
         // for (int i = 0; i < arr.length; i++) {
@@ -100,16 +122,20 @@ public static int countNodes(Node root){
         // String key="ilikesamsung";
         // System.out.println(Wordbreak(key));
 
-        String words[]={"apple","app","mango","man","woman"};
-        String prefix1="app";
-        String prefix2="moon";
 
-        for (int i = 0; i < words.length; i++) {
-            insert(words[i]);
+
+        // String words[]={"apple","app","mango","man","woman"};
+        // String prefix1="app";
+        // String prefix2="moon";
+
+        // for (int i = 0; i < words.length; i++) {
+        //     insert(words[i]);
             
-        }
-        System.out.println(startsWith(prefix2));
-        System.out.println(startsWith(prefix1));
+        // }
+        // System.out.println(startsWith(prefix2));
+        // System.out.println(startsWith(prefix1));
+
+
 
  String str = "ababa";
 // Insert all suffixes into the trie
@@ -120,6 +146,16 @@ for (int i = 0; i < str.length(); i++) {
 
 // Count nodes and subtract 1 to exclude root
 System.out.println(countNodes(root));
+
+
+
+
+String words[]={"a","banana","app","ap","appl","apply","apple"};
+for (int i = 0; i < words.length; i++) {
+    insert(words[i]);  
+}
+longestWord(root, new StringBuilder(" "));
+System.out.println(ans);
 
     }
 
