@@ -111,8 +111,7 @@ public static int countNodes(Node root){
         System.out.println(startsWith(prefix2));
         System.out.println(startsWith(prefix1));
 
-       String str = "ababa";
-
+ String str = "ababa";
 // Insert all suffixes into the trie
 for (int i = 0; i < str.length(); i++) {
     String suffix = str.substring(i);
@@ -120,7 +119,7 @@ for (int i = 0; i < str.length(); i++) {
 }
 
 // Count nodes and subtract 1 to exclude root
-System.out.println(countNodes(root) - 1);
+System.out.println(countNodes(root));
 
     }
 
