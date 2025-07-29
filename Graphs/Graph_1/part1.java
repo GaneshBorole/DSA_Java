@@ -83,6 +83,23 @@ public class part1 {
         }
     }
 
+    //tell if path exist from src --> dest of a node
+    public static boolean hasPath(ArrayList<Edge>[] graph,int src,int dest,boolean vis[]){
+        if (src== dest) {
+            return true;
+        }
+        vis[src]=true;
+        for (int i = 0; i < graph[src].size(); i++) {
+            Edge e= graph[src].get(i);
+            if (! vis[e.dest]&& hasPath(graph, e.dest, dest, vis)) {
+                return true;
+                
+            }
+            
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         // int V=5;
         // @SuppressWarnings("unchecked")
@@ -124,7 +141,12 @@ public class part1 {
 
         createGraph(graph);
        // BFS(graph);
-       DFS(graph, 0, new boolean[V]);
+       //DFS(graph, 0, new boolean[V]);
+       
+        boolean[] vis = new boolean[V];
+        int src = 0;
+        int dest = 3;
+        System.out.println(hasPath(graph, src, dest, vis));
 
     }
 
