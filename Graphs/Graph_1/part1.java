@@ -48,7 +48,7 @@ public class part1 {
     }
 
     // BFS algorithm
-    public static void BFS(ArrayList<Edge>[] graph) { //O(n)
+    public static void BFS(ArrayList<Edge>[] graph) { //O(V+E)
         Queue<Integer> q = new LinkedList<>();
         boolean vis[] = new boolean[graph.length];
         q.add(0);
@@ -66,6 +66,20 @@ public class part1 {
 
             }
 
+        }
+    }
+
+    //DFS algorithm
+    public static void DFS(ArrayList<Edge> [] graph,int curr,boolean vis[]){ //O(V+E)
+        System.out.print(curr + " ");
+        vis [curr]=true;
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e=graph[curr].get(i);
+            if (!vis[e.dest]) {
+                DFS(graph, e.dest, vis);
+                
+            }
+            
         }
     }
 
@@ -109,7 +123,8 @@ public class part1 {
         }
 
         createGraph(graph);
-        BFS(graph);
+       // BFS(graph);
+       DFS(graph, 0, new boolean[V]);
 
     }
 
