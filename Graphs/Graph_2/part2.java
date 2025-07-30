@@ -41,6 +41,7 @@ public class part2 {
         
     }
 
+    //1. detect a cycle in graph
     public static boolean detectCycle(ArrayList<Edge>[] graph){
         boolean vis[]=new boolean[graph.length];
         for (int i = 0; i < graph.length; i++) {
@@ -69,12 +70,48 @@ public class part2 {
     return false;
 }
 
-    public static void main(String[] args) {
+
+
+// 1.check if  given graph is Bipartite or Not
+public static boolean isBipartite(ArrayList<Edge> [] graph){
+    int color []=new int[graph.length];
+    for (int i = 0; i < color.length; i++) {
+        color[i]=-1;  
+    }
+    Queue<Integer> q= new LinkedList<>();
+    for (int i = 0; i < graph.length; i++) {
+        if (color[i]== -1) {
+            q.add(i);
+            color[i]=0;//yellow
+            while (!q.isEmpty()) {
+                int curr=q.remove();
+                for (int j = 0; j < graph[curr].size(); j++) {
+                    Edge e= graph[curr].get(j);
+                    if (color[e.dest]== -1) {
+                        int nextCol=color[curr] ==0 ? 1:0;
+                        color[e.dest]=nextCol;
+                        q.add(e.dest);
+                    }else if (color[e.dest]==color[curr]) {
+                        return false;
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    return true;
+}
+     public static void main(String[] args) {
         int V=5;
         @SuppressWarnings ("unchecked")
         ArrayList<Edge> graph[]=new ArrayList[V];
         createGraph(graph);
-        System.out.println(detectCycle(graph));
+       // System.out.println(detectCycle(graph));
+       System.out.println(isBipartite(graph));
     }
 
     
