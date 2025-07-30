@@ -1,16 +1,19 @@
 package Graphs.Graph_2;
 import java.util.*;
 
+import Graphs.Graph_2.part2.Edge;
+
+
 public class part2 {
     static class Edge {
         int src;
         int dest;
-        int wt;
+      
 
-        public Edge(int src, int dest, int wt) {
+        public Edge(int s, int d) {
             this.src = s;
             this.dest = d;
-            this.wt = w;
+           
         }
 
     }
@@ -20,84 +23,61 @@ public class part2 {
             graph[i] = new ArrayList<>();
 
         }
-        graph[0].add(new Edge(0, 1, 1));
-        graph[0].add(new Edge(0, 2, 1));
+        graph[0].add(new Edge(0,1));
+        graph[0].add(new Edge(0,2));
+        graph[0].add(new Edge(0,3));
 
-        graph[1].add(new Edge(1, 0, 1));
-        graph[1].add(new Edge(1, 3, 1));
+        graph[1].add(new Edge(1, 0));
+        graph[1].add(new Edge(1, 2));
 
-        graph[2].add(new Edge(2, 0, 1));
-        graph[2].add(new Edge(2, 4, 1));
+        graph[2].add(new Edge(2, 0));
+        graph[2].add(new Edge(2, 1));
 
-        graph[3].add(new Edge(3, 1, 1));
-        graph[3].add(new Edge(3, 5, 1));
-        graph[3].add(new Edge(3, 4, 1));
+        graph[3].add(new Edge(3, 0));
+        graph[3].add(new Edge(3, 4));
+      
 
-        graph[4].add(new Edge(4, 2, 1));
-        graph[4].add(new Edge(4, 5, 1));
-        graph[4].add(new Edge(4, 3, 1));
-
-        graph[5].add(new Edge(5, 4, 1));
-        graph[5].add(new Edge(5, 3, 1));
-        graph[5].add(new Edge(5, 6, 1));
-
-        graph[6].add(new Edge(6, 5, 1));
-
+        graph[4].add(new Edge(4, 3));
+        
     }
 
-    // BFS algorithm for connected components of graph
-    public static void bfs(ArrayList<Edge>[] graph) {
-        boolean vis[] = new boolean[graph.length];
+    public static boolean detectCycle(ArrayList<Edge>[] graph){
+        boolean vis[]=new boolean[graph.length];
         for (int i = 0; i < graph.length; i++) {
             if (!vis[i]) {
-                BFSutil(graph, vis);
+                if(detectCycleUtil(graph, vis, i, -1)){
+                    return true;
+                };
+                
             }
-
         }
+        return false;
     }
-
-    public static void BFSutil(ArrayList<Edge>[] graph, boolean vis[]) { // O(V+E)
-        Queue<Integer> q = new LinkedList<>();
-        q.add(0);
-
-        while (!q.isEmpty()) {
-            int curr = q.remove();
-            if (!vis[curr]) {
-                System.out.print(curr + " ");
-                vis[curr] = true;
-                for (int i = 0; i < graph[curr].size(); i++) {
-                    Edge e = graph[curr].get(i);
-                    q.add(e.dest);
-
-                }
-
+  public static boolean detectCycleUtil(ArrayList<Edge>[] graph, boolean[] vis, int curr, int par) {
+    vis[curr] = true;
+    for (int i = 0; i < graph[curr].size(); i++) {
+        Edge e = graph[curr].get(i);
+        if (!vis[e.dest]) {
+            if (detectCycleUtil(graph, vis, e.dest, curr)) {
+                return true;
             }
-
+        } else if (e.dest != par) {
+            // A visited node that is not the parent means a cycle
+            return true;
         }
     }
+    return false;
+}
 
-    // DFS algorithm
-    public static void dfs(ArrayList<Edge>[] graph) {
-        boolean vis[] = new boolean[graph.length];
-        for (int i = 0; i < graph.length; i++) {
-            DFSutil(graph, i, vis);
-
-        }
+    public static void main(String[] args) {
+        int V=5;
+        @SuppressWarnings ("unchecked")
+        ArrayList<Edge> graph[]=new ArrayList[V];
+        createGraph(graph);
+        System.out.println(detectCycle(graph));
     }
 
-    public static void DFSutil(ArrayList<Edge>[] graph, int curr, boolean vis[]) { // O(V+E)
-        System.out.print(curr + " ");
-        vis[curr] = true;
-        for (int i = 0; i < graph[curr].size(); i++) {
-            Edge e = graph[curr].get(i);
-            if (!vis[e.dest]) {
-                DFSutil(graph, e.dest, vis);
-
-            }
-
-        }
-    }
-
+    
 }
 
     
