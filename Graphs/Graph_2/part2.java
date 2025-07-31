@@ -107,6 +107,8 @@ public static boolean isBipartite(ArrayList<Edge> [] graph){
     return true;
 }
 
+
+
 // 2. check a cycle is exist in  directed graph or Not
 
 public static boolean isCycle(ArrayList<Edge> [] graph){
@@ -125,7 +127,6 @@ public static boolean isCycle(ArrayList<Edge> [] graph){
     return false;   
 
 }
-
 public static boolean isCycleUtil(ArrayList<Edge> [] graph,int curr,boolean vis [],boolean stack []){
     vis[curr]=true;
     stack[curr]=true;
@@ -137,8 +138,7 @@ public static boolean isCycleUtil(ArrayList<Edge> [] graph,int curr,boolean vis 
         
     }
     if (!vis[e.dest] && isCycleUtil(graph, e.dest, vis, stack))  {
-        return true;
-        
+        return true;  
     }
    }
    stack[curr]=false;
