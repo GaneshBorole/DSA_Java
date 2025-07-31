@@ -4,6 +4,7 @@ import java.util.*;
 import Graphs.Graph_2.part2.Edge;
 
 
+
 public class part2 {
     static class Edge {
         int src;
@@ -105,13 +106,54 @@ public static boolean isBipartite(ArrayList<Edge> [] graph){
     }
     return true;
 }
-     public static void main(String[] args) {
+
+// 2. check a cycle is exist in  directed graph or Not
+public static boolean isCycle(ArrayList<Edge> [] graph){
+    boolean vis[]=new boolean[graph.length];
+    boolean stack[]=new boolean[graph.length];
+
+    for (int i = 0; i < graph.length; i++) {
+        if (!vis[i]) {
+            if (isCycleUtil(graph,i,vis,stack)){
+                return true;
+            }
+            
+        }
+        
+    }
+    return false;   
+
+}
+
+public static boolean isCycleUtil(ArrayList<Edge> [] graph,int curr,boolean vis [],boolean stack []){
+    vis[curr]=true;
+    stack[curr]=true;
+
+   for(int i=0;i<graph[curr].size();i++){
+    Edge e= graph[curr].get(i);
+    if (stack[e.dest]) {
+        return true;
+        
+    }
+    if (!vis[e.dest] && isCycleUtil(graph, e.dest, vis, stack))  {
+        return true;
+        
+    }
+   }
+   stack[curr]=false;
+   return false;
+}
+
+
+
+public static void main(String[] args) {
         int V=5;
         @SuppressWarnings ("unchecked")
         ArrayList<Edge> graph[]=new ArrayList[V];
         createGraph(graph);
        // System.out.println(detectCycle(graph));
-       System.out.println(isBipartite(graph));
+      // System.out.println(isBipartite(graph));
+      System.out.println(isCycle(graph));
     }
 
     
