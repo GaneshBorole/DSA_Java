@@ -174,8 +174,6 @@ public static void  Topological(ArrayList<Edge> [] graph){
     }
 
 }
-
-
 public static void TopologicalUtil(ArrayList<Edge> [] graph,int curr,boolean vis[],Stack<Integer> s){
     vis[curr]= true;
     for (int i = 0; i < graph[curr].size(); i++) {
