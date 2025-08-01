@@ -24,21 +24,32 @@ public class part2 {
             graph[i] = new ArrayList<>();
 
         }
-        graph[0].add(new Edge(0,1));
-        graph[0].add(new Edge(0,2));
-        graph[0].add(new Edge(0,3));
+        // graph[0].add(new Edge(0,1));
+        // graph[0].add(new Edge(0,2));
+        // graph[0].add(new Edge(0,3));
 
-        graph[1].add(new Edge(1, 0));
-        graph[1].add(new Edge(1, 2));
+        // graph[1].add(new Edge(1, 0));
+        // graph[1].add(new Edge(1, 2));
 
-        graph[2].add(new Edge(2, 0));
-        graph[2].add(new Edge(2, 1));
+        // graph[2].add(new Edge(2, 0));
+        // graph[2].add(new Edge(2, 1));
 
-        graph[3].add(new Edge(3, 0));
-        graph[3].add(new Edge(3, 4));
+        // graph[3].add(new Edge(3, 0));
+        // graph[3].add(new Edge(3, 4));
       
 
-        graph[4].add(new Edge(4, 3));
+        // graph[4].add(new Edge(4, 3));
+
+    
+
+    graph[2].add(new Edge(2, 3));
+    graph[3].add(new Edge(3, 1));
+    graph[4].add(new Edge(4, 0));
+    graph[4].add(new Edge(4, 1));
+    graph[5].add(new Edge(5, 0));
+    graph[5].add(new Edge(5, 2));
+
+
         
     }
 
@@ -146,15 +157,46 @@ public static boolean isCycleUtil(ArrayList<Edge> [] graph,int curr,boolean vis 
 }
 
 
+// 3. Topological Sorting for a DAG(Directed Acyclic graph)
+public static void  Topological(ArrayList<Edge> [] graph){
+    boolean vis[]= new boolean[graph.length];
+    Stack<Integer> s= new Stack<>();
+    
+    for(int i=0;i<graph.length;i++){
+        if (!vis[i]) {
+            TopologicalUtil(graph,i,vis,s);//modified Dfs
+            
+        }
+    }
+    while (!s.isEmpty()) {
+        System.out.print(s.pop()+" ");
+        
+    }
 
+}
+
+
+public static void TopologicalUtil(ArrayList<Edge> [] graph,int curr,boolean vis[],Stack<Integer> s){
+    vis[curr]= true;
+    for (int i = 0; i < graph[curr].size(); i++) {
+        Edge e= graph[curr].get(i);
+        if (!vis[e.dest]) {
+            TopologicalUtil(graph,e.dest,vis,s);
+        }
+        
+    }
+    s.push(curr);
+
+}
 public static void main(String[] args) {
-        int V=5;
+        int V=6;
         @SuppressWarnings ("unchecked")
         ArrayList<Edge> graph[]=new ArrayList[V];
         createGraph(graph);
        // System.out.println(detectCycle(graph));
       // System.out.println(isBipartite(graph));
-      System.out.println(isCycle(graph));
+      //System.out.println(isCycle(graph));
+      Topological(graph);
     }
 
     
