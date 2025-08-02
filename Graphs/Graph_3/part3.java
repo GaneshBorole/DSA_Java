@@ -95,6 +95,7 @@ public static void printAllpath(ArrayList<Edge> graph[],int src,int dest,String 
 
 
 //Dijkstras algorithm
+
 static class pair implements Comparable<pair>{
     int n;
     int path;
@@ -156,6 +157,7 @@ System.out.println();
        // topsort(graph);
     //    int src=5;int dest=1;
     //    printAllpath(graph, src, dest, " ");
+
     int src=0;
     Dijkstras(graph,src);
 
