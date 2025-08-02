@@ -63,12 +63,28 @@ public static void topsort(ArrayList<Edge> graph[]){
     System.out.println();
 }
 
+
+// All paths from source to destination
+public static void printAllpath(ArrayList<Edge> graph[],int src,int dest,String path){
+    if (src== dest) {
+        System.out.print(path+dest);
+        return;
+        
+    }
+    for(int i=0;i<graph[src].size();i++){
+        Edge e=graph[src].get(i);
+        printAllpath(graph, e.dest, dest, path+src);
+    }
+}
     public static void main(String[] args) {
         int V=6;
         @SuppressWarnings("unchecked")
         ArrayList<Edge> graph[]=new ArrayList[V];
         cerateGraph(graph);
-        topsort(graph);
+       // topsort(graph);
+       int src=5;int dest=1;
+       printAllpath(graph, src, dest, " ");
+
         
     }
     
