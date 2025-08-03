@@ -60,7 +60,6 @@ public class part4 {
         }
         for (int i = 0; i < graph.length; i++) {
             if (dist[i] == Integer.MAX_VALUE) {
-                
                 //System.out.print("INF ");
             } else {
                 System.out.print(dist[i] + " ");
