@@ -31,7 +31,7 @@ public class part4 {
         graph[4].add(new Edge(4, 1, -1));
 
     }
-
+// Bellmanford algorithm (it calculate -ve shortest distance)
     public static void BellmanFord(ArrayList<Edge> graph[], int src) {
         int dist[] = new int[graph.length];
         for (int i = 0; i < dist.length; i++) {
