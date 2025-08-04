@@ -1,6 +1,5 @@
 package Graphs.Graph_5;
-
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class connectingCities {
     static class Edge implements Comparable<Edge>{
@@ -15,10 +14,10 @@ public class connectingCities {
         @Override
         public int compareTo(Edge e2){
             return this.cost-e2.cost;
-        }
-    
-        
+        }  
     }
+
+    //2. connecting cities with minimum cost
     public static int connectCities(int cities[][]){
         PriorityQueue<Edge> pq= new PriorityQueue<>();
         boolean vis[]=new boolean[cities.length];
