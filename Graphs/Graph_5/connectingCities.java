@@ -42,6 +42,8 @@ public class connectingCities {
         return finalcost;
 
     }
+
+
     public static void main(String[] args) {
         int cities[][]={{0,1,2,3,4},
         {1,0,5,0,7},
