@@ -1,5 +1,4 @@
 package Graphs.Graph_supplemental;
-import java.security.interfaces.EdECKey;
 import java.util.*;
 
 public class Trajans {
@@ -11,8 +10,6 @@ public class Trajans {
             this.src=s;
             this.dest=d;
         }
-    
-        
     }
     public static void createGraph(ArrayList<Edge> graph[]){
         for(int i=0;i<graph.length;i++){
