@@ -1,6 +1,8 @@
 package DP.DP_1;
 import java.util.*;
 
+
+
 public class part1 {
 //1.fibonacci using Memoization
     public static int  fib(int n,int f [] ){
@@ -25,11 +27,31 @@ public class part1 {
     }
     return dp[n];
 }
+
+//2.climbing Stairs problem
+public static int climbingstairs(int n,int ways []){
+    //memoization -->O(n)
+    if (n==0) {
+        return 1;
+    }
+    if (n < 0) {
+        return 0;
+    }
+    if (ways[n]!= -1) {
+        return ways[n];
+        
+    }
+    ways[n]= climbingstairs(n-1,ways)+climbingstairs(n-2,ways);
+    return ways[n];
+}
     public static void main(String[] args) {
         int n=5;
-        int f[]=new int[n+1];
+       // int f[]=new int[n+1];
+       int ways[]=new int[n+1];
+        Arrays.fill(ways, -1);
         //System.out.println(fib(n,f));
         System.out.println(fibTabulation(n));
+        System.out.println(climbingstairs(n,ways));
         
     }
     
