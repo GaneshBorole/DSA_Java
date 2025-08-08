@@ -28,7 +28,7 @@ public class part1 {
     return dp[n];
 }
 
-//2.climbing Stairs problem
+//2.climbing Stairs problem using memoization
 public static int climbingstairs(int n,int ways []){
     //memoization -->O(n)
     if (n==0) {
@@ -46,7 +46,8 @@ public static int climbingstairs(int n,int ways []){
 }
 
 
-//climbing stairs using tabulation
+//climbing stairs using tabulation 
+//time complexity O(n)
 public static int climbStairTab(int n){
     int dp []= new int[n+1];
     dp[0]=1;
