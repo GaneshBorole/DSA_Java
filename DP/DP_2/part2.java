@@ -2,6 +2,7 @@ package DP.DP_2;
 import java.util.*;
 
 public class part2 {
+    //0-1 knapsack recursion code
     public static int knapsack(int val[],int wt[],int W,int n){
         if (W==0 || n==0) {
             return 0;
@@ -17,6 +18,9 @@ public class part2 {
             return knapsack(val, wt, W, n-1);
         }
     }
+
+//0-1 knapsack using Memoization
+
     public static void main(String[] args) {
         int val[]={15,14,10,45,30};
         int wt[]={2,5,1,3,4};
