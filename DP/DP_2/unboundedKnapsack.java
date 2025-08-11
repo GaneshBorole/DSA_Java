@@ -30,7 +30,7 @@ public class unboundedKnapsack {
                 }
             }
         }
-        
+        print(dp);
         return dp[n][W];
        
     }
