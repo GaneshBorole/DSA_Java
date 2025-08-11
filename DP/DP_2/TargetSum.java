@@ -1,6 +1,7 @@
 package DP.DP_2;
 
 public class TargetSum {
+    // check if a targetSum subarray exist or Not
     public static boolean targetSum(int arr[],int sum){
         int n= arr.length;
         boolean dp[][]=new boolean[n+1][sum+1];
