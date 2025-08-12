@@ -4,6 +4,8 @@ public class RodCutting {
 
     public static int  rodCut(int length[],int price[],int totalRod){
         // T.C(n*totalRod)
+
+        //weight=length ; val=> price ; W=totalRod
         int n=length.length;
         int dp[][]=new int[n+1][totalRod+1];
 
