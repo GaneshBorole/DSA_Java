@@ -24,7 +24,7 @@ public class LCS {
         if (dp[n][m]!=-1) {
             return dp[n][m];
         }
-        if (str1.charAt(n-1)== str2.charAt(m-1)) {
+        if (str1.charAt(n-1)== str2.charAt(m-1)) { // valid state
             return dp[n][m]=lcs2(str1, str2, n-1, m-1,dp)+ 1;
             
         }else{
@@ -41,7 +41,7 @@ public class LCS {
         int dp[][]=new int[n+1][m+1];
         for(int i=0;i<n+1;i++){
             for(int j=0;j<m+1;j++){
-                dp[i][j]=-1;
+                dp[i][j]= -1;
 
             }
         }
