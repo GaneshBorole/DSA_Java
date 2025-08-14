@@ -27,7 +27,7 @@ public class lcs {
 
     public static void main(String[] args) {
         String str1="ABCDE";
-        String str2="ABGCE"; 
+        String str2="ABGCE"; // output: 2 longest common subSequence AB=2;
         int n=str1.length();
         int m=str2.length();
         System.out.println(subString(str1, str2, n, m));
