@@ -11,7 +11,8 @@ public class unboundedKnapsack {
         }
         System.out.println();
     }
-    public static int unboundknap(int val[],int wt[],int W){  //T.C(n*W)
+
+    public static int unboundknapSack(int val[],int wt[],int W){  //T.C(n*W)
         int n=val.length;
         int dp[][]=new int[n+1][W+1];
         for(int i=0;i<dp.length;i++){
@@ -38,7 +39,7 @@ public class unboundedKnapsack {
         int val[]={15,14,10,45,30};
         int wt[]={2,5,1,3,4};
         int W=7;
-        System.out.println(unboundknap(val, wt, W));
+        System.out.println(unboundknapSack(val, wt, W));
 
     }
     
