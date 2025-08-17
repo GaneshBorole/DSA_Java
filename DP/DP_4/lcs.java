@@ -2,6 +2,7 @@ package DP.DP_4;
 
 public class lcs {
      //1.contigeous sequence of a substring
+     
      public static int subString(String str1,String str2,int n,int m){
         int dp[][]=new int[n+1][m+1];
         int ans=0;
