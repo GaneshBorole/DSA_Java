@@ -1,6 +1,7 @@
 package DP.DP_3;
 
 public class coinChange {
+    //print function to print dp[][]
     public static void print(int dp[][]){
         for(int i=0;i<dp.length;i++){
             for(int j=0;j<dp[0].length;j++){
@@ -12,7 +13,7 @@ public class coinChange {
     }
 
     
-    
+
     public static int coinChange(int coins[],int sum){
         int n=coins.length;
        int  dp[][]=new int[n+1][sum+1];
