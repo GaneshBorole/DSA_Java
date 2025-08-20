@@ -31,7 +31,6 @@ public class part1 {
 
 
 //2.climbing Stairs problem using memoization
-
 public static int climbingstairs(int n,int ways []){
     //memoization -->O(n)
     if (n==0) {
