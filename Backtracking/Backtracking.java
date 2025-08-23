@@ -149,7 +149,6 @@ public static boolean isSafe(int sudoku[][],int row, int col,int digit){
             return false;
         }
     }
-
     //grid
     int sr=(row/3)*3;
     int sc=(col/3)*3;
@@ -162,7 +161,6 @@ public static boolean isSafe(int sudoku[][],int row, int col,int digit){
         }
     }
     return true;
-
 }
 public static boolean SudokoSolver(int sudoku[][],int row, int col){
     //base case
