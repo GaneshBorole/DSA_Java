@@ -154,11 +154,10 @@ public class BST1 {
 
     }
 
-    //Mirror image of a BST
+    //Mirror image of a Binary Search tree
 public static Node createMirror(Node root){
     if (root== null) {
-        return null;
-        
+        return null; 
     }
 Node leftMirror=createMirror(root.left);
 Node rightMirror=createMirror(root.right);
