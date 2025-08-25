@@ -96,6 +96,8 @@ public class BST1 {
         return root;
     }
 
+
+    
   //Print in Range 
     public static void PrintInRange(Node root,int k1,int k2){
         if (root== null) {
@@ -115,6 +117,8 @@ public class BST1 {
             PrintInRange(root.right,k1,k2);
          }
     }
+
+
 
     //Root To Leaf Node path
     public static void printpath(ArrayList<Integer> path){
@@ -175,6 +179,11 @@ public static void preorder(Node root){
     preorder(root.left);
     preorder(root.right);
 }
+
+
+
+
+
 
     public static void main(String[] args) {
         //  int val[]={5,1,3,4,2,7};
