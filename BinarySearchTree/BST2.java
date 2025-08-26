@@ -68,6 +68,7 @@ public static Node BalancedBst(Node root) {
 }
 
 
+
 // 3. size of BST in BT
 static class Info{
     boolean isBSt;
@@ -123,7 +124,6 @@ while (i<arr1.size()&& j<arr2.size()) {
         finalarr.add(arr2.get(j));
         j++;
     }
-    
 }
 while (i<arr1.size()) {
     finalarr.add(arr1.get(i));
