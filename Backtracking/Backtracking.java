@@ -135,7 +135,6 @@ public static int gridways(int i,int j,int n,int m){
 
 
 //sudoko solver problem
-
 public static boolean isSafe(int sudoku[][],int row, int col,int digit){
     //col
     for(int i=0;i<=8;i++){
