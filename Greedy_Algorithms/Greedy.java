@@ -153,6 +153,7 @@ public class Greedy {
         // System.out.println();
 
 
+        
         //6.Job sequencing Problem
 
     //     int jobsInfo[][] = { {4, 20}, {1, 10}, {1, 40}, {1, 30} };
