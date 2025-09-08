@@ -32,6 +32,7 @@ public class lis {
         }
         return dp[n][m];
     }
+    //Longest increasing subsequence
     public static int lis(int arr1[]){
         HashSet<Integer> set=new HashSet<>();
         for (int i = 0; i < arr1.length; i++) {
@@ -50,7 +51,7 @@ public class lis {
 
     }
     public static void main(String[] args) {
-        int arr[]={50,3,10,7,40,80};
+        int arr[]={50,3,10,7,40,80}; //output = 3,7,40,80
         System.out.println(lis(arr));
     }
     
