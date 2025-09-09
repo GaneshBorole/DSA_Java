@@ -38,7 +38,7 @@ public class EditDistance {
         return dp[n][m];
     }
     public static void main(String[] args) {
-        String word1="intention";// we need to conevert word intention to execution and  return its steps
+        String word1="intention";// we need to conevert word intention to execution and  return minimum  operation steps to convert it
         String word2="execution";
         System.out.println(editDistance(word1, word2));
 
