@@ -1,7 +1,7 @@
 package DP.DP_4;
 
 public class EditDistance {
-    //O(n*m)
+    //time complexity = O(n*m)
     public static int editDistance(String str1,String str2){
         int n= str1.length();
         int m=str2.length();
@@ -38,7 +38,7 @@ public class EditDistance {
         return dp[n][m];
     }
     public static void main(String[] args) {
-        String word1="intention";
+        String word1="intention";// we need to conevert word intention to execution and  return its steps
         String word2="execution";
         System.out.println(editDistance(word1, word2));
 
