@@ -1,4 +1,5 @@
 package DP.DP_5;
+import java.util.*;
 
 public class Wildcardmatch {
     public static boolean isMatch(String s,String p){
@@ -8,12 +9,12 @@ public class Wildcardmatch {
 
         //initialize
         dp[0][0]=true;
-      //pattern=" "
+           //where our pattern=" "
         for (int i = 1; i < n+1; i++) {
             dp[i][0]=false;
             
         }
-        //where our s=" "
+           //where our s=" "
         for (int j=1; j <m+1; j++) {
            if (p.charAt(j-1)=='*') {
             dp[0][j]=dp[0][j-1];
