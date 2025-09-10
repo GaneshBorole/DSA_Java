@@ -2,6 +2,7 @@ package DP.DP_5;
 import java.util.*;
 
 public class Wildcardmatch {
+    //Time complexity (Hard level)= O(n*m)
     public static boolean isMatch(String s,String p){
         int n=s.length();
         int m=p.length();
