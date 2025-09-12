@@ -51,6 +51,6 @@ public class catalanNumber {
         Arrays.fill(dp, -1);
         System.out.println(catalanMemo(n, dp));
         
-        
+        System.out.println(catalanTab(5));
     }
 }
