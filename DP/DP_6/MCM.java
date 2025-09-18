@@ -8,7 +8,7 @@ public class MCM {
         int ans=Integer.MAX_VALUE;
         for (int k = i; k <= j-1; k++) {
             int cost1=mcmRec(arr, i, k);// res=arr[i-1].arr[k];
-            int cost2=mcmRec(arr, k2+1, j);// res=arr[k].arr[j];
+            int cost2=mcmRec(arr, k+1, j);// res=arr[k].arr[j];
             int cost3=arr[i-1]*arr[k]*arr[j];
             int finaalCost=cost1+cost2+cost3;
             ans=Math.min(ans, finaalCost);
