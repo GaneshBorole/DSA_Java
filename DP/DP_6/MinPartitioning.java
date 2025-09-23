@@ -3,6 +3,7 @@ import java.util.*;
 
 
 public class MinPartitioning {
+    //It is a variation of 0-1 knapsack
     public static int  MinPart(int arr[]){
         int n=arr.length;
         int sum=0;
